@@ -1,8 +1,8 @@
 
 
-d_config = {
+r_config = {
     "header": [
-        "! device: hq-it-lab-core-sw01 (DCS-7280SR-48C6-M, EOS-4.20.12M)\n!\n"
+        "! device: hq-it-lab-core-sw01 (DCS-7280SR-48C6-M, EOS-4.18.8M)\n!\n"
     ],
     "comments": [],
     "cmds": {
@@ -106,7 +106,20 @@ d_config = {
         },
         "ip routing": "null",
         "snmp-server location sjc-hq-lab": "null",
-        "snmp-server contact IT-Networking": "null",
+        "router bgp 64496": {
+            "comments": [],
+            "cmds": {
+                "vrf purple": {
+                    "comments": [],
+                    "cmds": {
+                        "graceful-restart restart-time 300": "null",
+                        "graceful-restart": "null"
+                    }
+                },
+                "graceful-restart restart-time 300": "null",
+                "graceful-restart": "null"
+            }
+        },
         "ntp server 10.55.66.10 prefer": "null",
         "logging host 10.101.33.83 protocol tcp": "null",
         "interface Ethernet46": {
@@ -166,20 +179,7 @@ d_config = {
                 "no shutdown": "null"
             }
         },
-        "router bgp 64496": {
-            "comments": [],
-            "cmds": {
-                "vrf purple": {
-                    "comments": [],
-                    "cmds": {
-                        "graceful-restart restart-time 300": "null",
-                        "graceful-restart": "null"
-                    }
-                },
-                "graceful-restart restart-time 300": "null",
-                "graceful-restart": "null"
-            }
-        },
+        "snmp-server contact IT-Networking": "null",
         "ip route 0.0.0.0/0 10.55.10.1": "null",
         "interface Ethernet19": {
             "comments": [],
@@ -385,6 +385,7 @@ d_config = {
             "cmds": {}
         },
         "terminal length 20": "null",
+        "! boot system flash:/EOS-4.18.8M.swi": "null",
         "daemon TerminAttr": {
             "comments": [],
             "cmds": {
@@ -427,7 +428,6 @@ d_config = {
             "comments": [],
             "cmds": {}
         },
-        "! boot system flash:/EOS-4.20.12M.swi": "null",
         "spanning-tree mst 0 priority 4096": "null",
         "ip domain-name paloaltonetworks.com": "null",
         "interface Vlan4094": {
@@ -448,6 +448,3 @@ d_config = {
         "no aaa root": "null"
     }
 }
-
-#print(r_config["cmds"])
-print(d_config["cmds"])

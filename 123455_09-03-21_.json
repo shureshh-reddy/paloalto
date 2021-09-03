@@ -1,0 +1,983 @@
+{
+    "version_summary": {
+        "command": "show version | include uptime",
+        "output": null
+    },
+    "interface_status": {
+        "command": "show ip interface brief | exclude unassigned",
+        "output": null
+    },
+    "show ip eigrp neighbor": {
+        "command": "show ip eigrp neighbor",
+        "output": null
+    },
+    "show interface description": {
+        "command": "show interface description",
+        "output": null
+    }
+}{
+    "version_summary": {
+        "command": "show version | include uptime",
+        "output": null
+    },
+    "interface_status": {
+        "command": "show ip interface brief | exclude unassigned",
+        "output": null
+    },
+    "show ip eigrp neighbor": {
+        "command": "show ip eigrp neighbor",
+        "output": null
+    },
+    "show interface description": {
+        "command": "show interface description",
+        "output": null
+    }
+}{
+    "version_summary": {
+        "command": "show version | include uptime",
+        "output": null
+    },
+    "interface_status": {
+        "command": "show ip interface brief | exclude unassigned",
+        "output": null
+    },
+    "show ip eigrp neighbor": {
+        "command": "show ip eigrp neighbor",
+        "output": null
+    },
+    "show interface description": {
+        "command": "show interface description",
+        "output": null
+    }
+}{
+    "version_summary": {
+        "command": "show version | include uptime",
+        "output": null
+    },
+    "interface_status": {
+        "command": "show ip interface brief | exclude unassigned",
+        "output": null
+    },
+    "show ip eigrp neighbor": {
+        "command": "show ip eigrp neighbor",
+        "output": null
+    },
+    "show interface description": {
+        "command": "show interface description",
+        "output": null
+    }
+}{
+    "version_summary": {
+        "command": "show version | include uptime",
+        "output": null
+    },
+    "interface_status": {
+        "command": "show ip interface brief | exclude unassigned",
+        "output": null
+    },
+    "show ip eigrp neighbor": {
+        "command": "show ip eigrp neighbor",
+        "output": null
+    },
+    "show interface description": {
+        "command": "show interface description",
+        "output": null
+    }
+}{
+    "version_summary": {
+        "command": "show version | include uptime",
+        "output": null
+    },
+    "interface_status": {
+        "command": "show ip interface brief | exclude unassigned",
+        "output": null
+    },
+    "show ip eigrp neighbor": {
+        "command": "show ip eigrp neighbor",
+        "output": null
+    },
+    "show interface description": {
+        "command": "show interface description",
+        "output": null
+    }
+}{
+    "version_summary": {
+        "command": "show version | include uptime",
+        "output": null
+    },
+    "interface_status": {
+        "command": "show ip interface brief | exclude unassigned",
+        "output": null
+    },
+    "show ip eigrp neighbor": {
+        "command": "show ip eigrp neighbor",
+        "output": null
+    },
+    "show interface description": {
+        "command": "show interface description",
+        "output": null
+    }
+}{
+    "version_summary": {
+        "command": "show version | include uptime",
+        "output": null
+    },
+    "interface_status": {
+        "command": "show ip interface brief | exclude unassigned",
+        "output": null
+    },
+    "show ip eigrp neighbor": {
+        "command": "show ip eigrp neighbor",
+        "output": null
+    },
+    "show interface description": {
+        "command": "show interface description",
+        "output": null
+    }
+}{
+    "version_summary": {
+        "command": "show version | include uptime",
+        "output": null
+    },
+    "interface_status": {
+        "command": "show ip interface brief | exclude unassigned",
+        "output": null
+    },
+    "show ip eigrp neighbor": {
+        "command": "show ip eigrp neighbor",
+        "output": null
+    },
+    "show interface description": {
+        "command": "show interface description",
+        "output": null
+    }
+}{
+    "version_summary": {
+        "command": "show version | include uptime",
+        "output": null
+    },
+    "interface_status": {
+        "command": "show ip interface brief | exclude unassigned",
+        "output": null
+    },
+    "show ip eigrp neighbor": {
+        "command": "show ip eigrp neighbor",
+        "output": null
+    },
+    "show interface description": {
+        "command": "show interface description",
+        "output": null
+    }
+}{
+    "version_summary": {
+        "command": "show version | include uptime",
+        "output": null
+    },
+    "interface_status": {
+        "command": "show ip interface brief | exclude unassigned",
+        "output": null
+    },
+    "show ip eigrp neighbor": {
+        "command": "show ip eigrp neighbor",
+        "output": null
+    },
+    "show interface description": {
+        "command": "show interface description",
+        "output": null
+    }
+}{
+    "version_summary": {
+        "command": "show version | include uptime",
+        "output": null
+    },
+    "interface_status": {
+        "command": "show ip interface brief | exclude unassigned",
+        "output": null
+    },
+    "show ip eigrp neighbor": {
+        "command": "show ip eigrp neighbor",
+        "output": null
+    },
+    "show interface description": {
+        "command": "show interface description",
+        "output": null
+    }
+}{
+    "version_summary": {
+        "command": "show version | include uptime",
+        "output": []
+    },
+    "interface_status": {
+        "command": "show ip interface brief | exclude unassigned",
+        "output": []
+    },
+    "show ip eigrp neighbor": {
+        "command": "show ip eigrp neighbor",
+        "output": []
+    },
+    "show interface description": {
+        "command": "show interface description",
+        "output": []
+    }
+}{
+    "version_summary": {
+        "command": "show version | include uptime",
+        "output": []
+    },
+    "interface_status": {
+        "command": "show ip interface brief | exclude unassigned",
+        "output": []
+    },
+    "show ip eigrp neighbor": {
+        "command": "show ip eigrp neighbor",
+        "output": []
+    },
+    "show interface description": {
+        "command": "show interface description",
+        "output": []
+    }
+}{
+    "version_summary": {
+        "command": "show version | include uptime",
+        "output": [
+            {
+                "version": "",
+                "rommon": "",
+                "hostname": "IOU1",
+                "uptime": "5 hours, 58 minutes",
+                "uptime_years": "",
+                "uptime_weeks": "",
+                "uptime_days": "",
+                "uptime_hours": "5",
+                "uptime_minutes": "58",
+                "reload_reason": "",
+                "running_image": "",
+                "hardware": [],
+                "serial": [],
+                "config_register": "",
+                "mac": [],
+                "restarted": ""
+            }
+        ]
+    },
+    "interface_status": {
+        "command": "show ip interface brief | exclude unassigned",
+        "output": [
+            {
+                "intf": "Ethernet0/0",
+                "ipaddr": "172.16.200.1",
+                "status": "up",
+                "proto": "up"
+            },
+            {
+                "intf": "Ethernet0/1",
+                "ipaddr": "172.16.124.1",
+                "status": "up",
+                "proto": "up"
+            },
+            {
+                "intf": "Ethernet0/2",
+                "ipaddr": "172.16.12.1",
+                "status": "up",
+                "proto": "up"
+            },
+            {
+                "intf": "Ethernet1/3",
+                "ipaddr": "192.168.91.250",
+                "status": "up",
+                "proto": "up"
+            }
+        ]
+    },
+    "show ip eigrp neighbor": {
+        "command": "show ip eigrp neighbor",
+        "output": [
+            {
+                "as": "100",
+                "address": "172.16.124.4",
+                "interface": "Et0/1",
+                "hold": "13",
+                "uptime": "01:24:49",
+                "srtt": "6",
+                "rto": "100",
+                "q_cnt": "0",
+                "seq_num": "15"
+            },
+            {
+                "as": "100",
+                "address": "172.16.124.2",
+                "interface": "Et0/1",
+                "hold": "13",
+                "uptime": "01:26:13",
+                "srtt": "4",
+                "rto": "100",
+                "q_cnt": "0",
+                "seq_num": "23"
+            },
+            {
+                "as": "100",
+                "address": "172.16.12.2",
+                "interface": "Et0/2",
+                "hold": "12",
+                "uptime": "01:26:14",
+                "srtt": "3",
+                "rto": "100",
+                "q_cnt": "0",
+                "seq_num": "24"
+            }
+        ]
+    },
+    "show interface description": {
+        "command": "show interface description",
+        "output": [
+            {
+                "port": "Et0/0",
+                "status": "up",
+                "protocol": "up",
+                "descrip": "ARISTA-1-VLAN200"
+            },
+            {
+                "port": "Et0/1",
+                "status": "up",
+                "protocol": "up",
+                "descrip": ""
+            },
+            {
+                "port": "Et0/2",
+                "status": "up",
+                "protocol": "up",
+                "descrip": "IOU2"
+            },
+            {
+                "port": "Et0/3",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Et1/0",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Et1/1",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Et1/2",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Et1/3",
+                "status": "up",
+                "protocol": "up",
+                "descrip": ""
+            },
+            {
+                "port": "Se2/0",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se2/1",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se2/2",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se2/3",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se3/0",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se3/1",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se3/2",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se3/3",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            }
+        ]
+    }
+}{
+    "version_summary": {
+        "command": "show version | include uptime",
+        "output": [
+            {
+                "version": "",
+                "rommon": "",
+                "hostname": "IOU2",
+                "uptime": "5 hours, 58 minutes",
+                "uptime_years": "",
+                "uptime_weeks": "",
+                "uptime_days": "",
+                "uptime_hours": "5",
+                "uptime_minutes": "58",
+                "reload_reason": "",
+                "running_image": "",
+                "hardware": [],
+                "serial": [],
+                "config_register": "",
+                "mac": [],
+                "restarted": ""
+            }
+        ]
+    },
+    "interface_status": {
+        "command": "show ip interface brief | exclude unassigned",
+        "output": [
+            {
+                "intf": "Ethernet0/0",
+                "ipaddr": "172.16.24.2",
+                "status": "up",
+                "proto": "up"
+            },
+            {
+                "intf": "Ethernet0/1",
+                "ipaddr": "172.16.12.2",
+                "status": "up",
+                "proto": "up"
+            },
+            {
+                "intf": "Ethernet0/2",
+                "ipaddr": "172.16.124.2",
+                "status": "up",
+                "proto": "up"
+            }
+        ]
+    },
+    "show ip eigrp neighbor": {
+        "command": "show ip eigrp neighbor",
+        "output": [
+            {
+                "as": "100",
+                "address": "172.16.24.4",
+                "interface": "Et0/0",
+                "hold": "12",
+                "uptime": "01:24:59",
+                "srtt": "5",
+                "rto": "100",
+                "q_cnt": "0",
+                "seq_num": "13"
+            },
+            {
+                "as": "100",
+                "address": "172.16.124.4",
+                "interface": "Et0/2",
+                "hold": "11",
+                "uptime": "01:24:59",
+                "srtt": "6",
+                "rto": "100",
+                "q_cnt": "0",
+                "seq_num": "15"
+            },
+            {
+                "as": "100",
+                "address": "172.16.124.1",
+                "interface": "Et0/2",
+                "hold": "14",
+                "uptime": "01:26:24",
+                "srtt": "530",
+                "rto": "3180",
+                "q_cnt": "0",
+                "seq_num": "16"
+            },
+            {
+                "as": "100",
+                "address": "172.16.12.1",
+                "interface": "Et0/1",
+                "hold": "14",
+                "uptime": "01:26:25",
+                "srtt": "5",
+                "rto": "100",
+                "q_cnt": "0",
+                "seq_num": "17"
+            }
+        ]
+    },
+    "show interface description": {
+        "command": "show interface description",
+        "output": [
+            {
+                "port": "Et0/0",
+                "status": "up",
+                "protocol": "up",
+                "descrip": ""
+            },
+            {
+                "port": "Et0/1",
+                "status": "up",
+                "protocol": "up",
+                "descrip": "IOU1"
+            },
+            {
+                "port": "Et0/2",
+                "status": "up",
+                "protocol": "up",
+                "descrip": ""
+            },
+            {
+                "port": "Et0/3",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Et1/0",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Et1/1",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Et1/2",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Et1/3",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se2/0",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se2/1",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se2/2",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se2/3",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se3/0",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se3/1",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se3/2",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se3/3",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            }
+        ]
+    }
+}{
+    "version_summary": {
+        "command": "show version | include uptime",
+        "output": [
+            {
+                "version": "",
+                "rommon": "",
+                "hostname": "IOU3",
+                "uptime": "5 hours, 59 minutes",
+                "uptime_years": "",
+                "uptime_weeks": "",
+                "uptime_days": "",
+                "uptime_hours": "5",
+                "uptime_minutes": "59",
+                "reload_reason": "",
+                "running_image": "",
+                "hardware": [],
+                "serial": [],
+                "config_register": "",
+                "mac": [],
+                "restarted": ""
+            }
+        ]
+    },
+    "interface_status": {
+        "command": "show ip interface brief | exclude unassigned",
+        "output": [
+            {
+                "intf": "Ethernet0/0",
+                "ipaddr": "172.16.100.2",
+                "status": "up",
+                "proto": "up"
+            },
+            {
+                "intf": "Ethernet0/1",
+                "ipaddr": "172.16.34.3",
+                "status": "up",
+                "proto": "up"
+            }
+        ]
+    },
+    "show ip eigrp neighbor": {
+        "command": "show ip eigrp neighbor",
+        "output": [
+            {
+                "as": "100",
+                "address": "172.16.34.4",
+                "interface": "Et0/1",
+                "hold": "13",
+                "uptime": "01:25:10",
+                "srtt": "3",
+                "rto": "100",
+                "q_cnt": "0",
+                "seq_num": "14"
+            }
+        ]
+    },
+    "show interface description": {
+        "command": "show interface description",
+        "output": [
+            {
+                "port": "Et0/0",
+                "status": "up",
+                "protocol": "up",
+                "descrip": "ARISTA-1-VLAN100"
+            },
+            {
+                "port": "Et0/1",
+                "status": "up",
+                "protocol": "up",
+                "descrip": "IOU4"
+            },
+            {
+                "port": "Et0/2",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Et0/3",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Et1/0",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Et1/1",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Et1/2",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Et1/3",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se2/0",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se2/1",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se2/2",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se2/3",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se3/0",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se3/1",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se3/2",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se3/3",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            }
+        ]
+    }
+}{
+    "version_summary": {
+        "command": "show version | include uptime",
+        "output": [
+            {
+                "version": "",
+                "rommon": "",
+                "hostname": "IOU4",
+                "uptime": "5 hours, 59 minutes",
+                "uptime_years": "",
+                "uptime_weeks": "",
+                "uptime_days": "",
+                "uptime_hours": "5",
+                "uptime_minutes": "59",
+                "reload_reason": "",
+                "running_image": "",
+                "hardware": [],
+                "serial": [],
+                "config_register": "",
+                "mac": [],
+                "restarted": ""
+            }
+        ]
+    },
+    "interface_status": {
+        "command": "show ip interface brief | exclude unassigned",
+        "output": [
+            {
+                "intf": "Ethernet0/0",
+                "ipaddr": "172.16.24.4",
+                "status": "up",
+                "proto": "up"
+            },
+            {
+                "intf": "Ethernet0/1",
+                "ipaddr": "172.16.34.4",
+                "status": "up",
+                "proto": "up"
+            },
+            {
+                "intf": "Ethernet0/2",
+                "ipaddr": "172.16.124.4",
+                "status": "up",
+                "proto": "up"
+            }
+        ]
+    },
+    "show ip eigrp neighbor": {
+        "command": "show ip eigrp neighbor",
+        "output": [
+            {
+                "as": "100",
+                "address": "172.16.24.2",
+                "interface": "Et0/0",
+                "hold": "11",
+                "uptime": "01:25:20",
+                "srtt": "1277",
+                "rto": "5000",
+                "q_cnt": "0",
+                "seq_num": "22"
+            },
+            {
+                "as": "100",
+                "address": "172.16.34.3",
+                "interface": "Et0/1",
+                "hold": "10",
+                "uptime": "01:25:20",
+                "srtt": "5",
+                "rto": "100",
+                "q_cnt": "0",
+                "seq_num": "5"
+            },
+            {
+                "as": "100",
+                "address": "172.16.124.2",
+                "interface": "Et0/2",
+                "hold": "13",
+                "uptime": "01:25:21",
+                "srtt": "820",
+                "rto": "4920",
+                "q_cnt": "0",
+                "seq_num": "23"
+            },
+            {
+                "as": "100",
+                "address": "172.16.124.1",
+                "interface": "Et0/2",
+                "hold": "11",
+                "uptime": "01:25:21",
+                "srtt": "5",
+                "rto": "100",
+                "q_cnt": "0",
+                "seq_num": "16"
+            }
+        ]
+    },
+    "show interface description": {
+        "command": "show interface description",
+        "output": [
+            {
+                "port": "Et0/0",
+                "status": "up",
+                "protocol": "up",
+                "descrip": ""
+            },
+            {
+                "port": "Et0/1",
+                "status": "up",
+                "protocol": "up",
+                "descrip": "IOU3"
+            },
+            {
+                "port": "Et0/2",
+                "status": "up",
+                "protocol": "up",
+                "descrip": ""
+            },
+            {
+                "port": "Et0/3",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Et1/0",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Et1/1",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Et1/2",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Et1/3",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se2/0",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se2/1",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se2/2",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se2/3",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se3/0",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se3/1",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se3/2",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            },
+            {
+                "port": "Se3/3",
+                "status": "admin down",
+                "protocol": "down",
+                "descrip": ""
+            }
+        ]
+    }
+}

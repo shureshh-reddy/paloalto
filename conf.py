@@ -123,9 +123,9 @@ class DeviceHandler:
         try:
             with EOSDriver(**self.device) as conn:
                 resp = conn.send_command(cmd)
-                output = resp.textfsm_parse_output()
-                return output
-                #return resp
+                #output = resp.textfsm_parse_output()
+                #return output
+                return resp.result
         except Exception as e:
             print(e)
             return None
@@ -134,9 +134,9 @@ class DeviceHandler:
         try:
             with IOSXEDriver(**self.device) as conn:
                 resp = conn.send_command(cmd)
-                output = resp.textfsm_parse_output()
-                return output
-                #return resp
+                #output = resp.textfsm_parse_output()
+                #return output
+                return resp.result
         except Exception as e:
             print(e)
             return None

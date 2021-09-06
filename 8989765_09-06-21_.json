@@ -1,201 +1,214 @@
 [
     {
-        "version_summary": {
-            "command": "show version | include uptime",
-            "output": [
-                {
-                    "version": "",
-                    "rommon": "",
-                    "hostname": "IOU1",
-                    "uptime": "2 hours, 12 minutes",
-                    "uptime_years": "",
-                    "uptime_weeks": "",
-                    "uptime_days": "",
-                    "uptime_hours": "2",
-                    "uptime_minutes": "12",
-                    "reload_reason": "",
-                    "running_image": "",
-                    "hardware": [],
-                    "serial": [],
-                    "config_register": "",
-                    "mac": [],
-                    "restarted": ""
-                }
-            ]
-        },
-        "interface_status": {
-            "command": "show ip interface brief | exclude unassigned",
-            "output": [
-                {
-                    "intf": "Ethernet0/0",
-                    "ipaddr": "172.16.200.1",
-                    "status": "up",
-                    "proto": "up"
-                },
-                {
-                    "intf": "Ethernet0/1",
-                    "ipaddr": "172.16.124.1",
-                    "status": "up",
-                    "proto": "up"
-                },
-                {
-                    "intf": "Ethernet0/2",
-                    "ipaddr": "172.16.12.1",
-                    "status": "up",
-                    "proto": "up"
-                },
-                {
-                    "intf": "Ethernet1/3",
-                    "ipaddr": "192.168.91.250",
-                    "status": "up",
-                    "proto": "up"
-                }
-            ]
-        },
-        "show ip eigrp neighbor": {
-            "command": "show ip eigrp neighbor",
-            "output": [
-                {
-                    "as": "100",
-                    "address": "172.16.124.2",
-                    "interface": "Et0/1",
-                    "hold": "10",
-                    "uptime": "01:11:17",
-                    "srtt": "5",
-                    "rto": "100",
-                    "q_cnt": "0",
-                    "seq_num": "38"
-                },
-                {
-                    "as": "100",
-                    "address": "172.16.124.4",
-                    "interface": "Et0/1",
-                    "hold": "11",
-                    "uptime": "01:11:17",
-                    "srtt": "1",
-                    "rto": "100",
-                    "q_cnt": "0",
-                    "seq_num": "34"
-                },
-                {
-                    "as": "100",
-                    "address": "172.16.12.2",
-                    "interface": "Et0/2",
-                    "hold": "11",
-                    "uptime": "01:11:17",
-                    "srtt": "1",
-                    "rto": "100",
-                    "q_cnt": "0",
-                    "seq_num": "39"
-                }
-            ]
-        },
-        "show interface description": {
-            "command": "show interface description",
-            "output": [
-                {
-                    "port": "Et0/0",
-                    "status": "up",
-                    "protocol": "up",
-                    "descrip": "ARISTA-1-VLAN200"
-                },
-                {
-                    "port": "Et0/1",
-                    "status": "up",
-                    "protocol": "up",
-                    "descrip": ""
-                },
-                {
-                    "port": "Et0/2",
-                    "status": "up",
-                    "protocol": "up",
-                    "descrip": "IOU2"
-                },
-                {
-                    "port": "Et0/3",
-                    "status": "admin down",
-                    "protocol": "down",
-                    "descrip": ""
-                },
-                {
-                    "port": "Et1/0",
-                    "status": "admin down",
-                    "protocol": "down",
-                    "descrip": ""
-                },
-                {
-                    "port": "Et1/1",
-                    "status": "admin down",
-                    "protocol": "down",
-                    "descrip": ""
-                },
-                {
-                    "port": "Et1/2",
-                    "status": "admin down",
-                    "protocol": "down",
-                    "descrip": ""
-                },
-                {
-                    "port": "Et1/3",
-                    "status": "up",
-                    "protocol": "up",
-                    "descrip": ""
-                },
-                {
-                    "port": "Se2/0",
-                    "status": "admin down",
-                    "protocol": "down",
-                    "descrip": ""
-                },
-                {
-                    "port": "Se2/1",
-                    "status": "admin down",
-                    "protocol": "down",
-                    "descrip": ""
-                },
-                {
-                    "port": "Se2/2",
-                    "status": "admin down",
-                    "protocol": "down",
-                    "descrip": ""
-                },
-                {
-                    "port": "Se2/3",
-                    "status": "admin down",
-                    "protocol": "down",
-                    "descrip": ""
-                },
-                {
-                    "port": "Se3/0",
-                    "status": "admin down",
-                    "protocol": "down",
-                    "descrip": ""
-                },
-                {
-                    "port": "Se3/1",
-                    "status": "admin down",
-                    "protocol": "down",
-                    "descrip": ""
-                },
-                {
-                    "port": "Se3/2",
-                    "status": "admin down",
-                    "protocol": "down",
-                    "descrip": ""
-                },
-                {
-                    "port": "Se3/3",
-                    "status": "admin down",
-                    "protocol": "down",
-                    "descrip": ""
-                },
-                {
-                    "port": "Lo99",
-                    "status": "up",
-                    "protocol": "up",
-                    "descrip": "TESTING POST ACTIONS"
-                }
-            ]
+        "IOU1": {
+            "version_summary": {
+                "command": "show version | include uptime",
+                "output": [
+                    "IOU1 uptime is 6 hours, 59 minutes"
+                ]
+            },
+            "interface_status": {
+                "command": "show ip interface brief | exclude unassigned",
+                "output": [
+                    "Interface                  IP-Address      OK? Method Status                Protocol",
+                    "Ethernet0/0                172.16.200.1    YES NVRAM  up                    up",
+                    "Ethernet0/1                172.16.124.1    YES NVRAM  up                    up",
+                    "Ethernet0/2                172.16.12.1     YES NVRAM  up                    up",
+                    "Ethernet1/3                192.168.91.250  YES NVRAM  up                    up"
+                ]
+            },
+            "show ip eigrp neighbor": {
+                "command": "show ip eigrp neighbor",
+                "output": [
+                    "EIGRP-IPv4 Neighbors for AS(100)",
+                    "H   Address                 Interface              Hold Uptime   SRTT   RTO  Q  Seq",
+                    "                                                   (sec)         (ms)       Cnt Num",
+                    "2   172.16.12.2             Et0/2                    10 04:24:05   52   312  0  88",
+                    "1   172.16.124.2            Et0/1                    11 04:24:05   53   318  0  86",
+                    "0   172.16.124.4            Et0/1                    12 04:24:05    8   100  0  79"
+                ]
+            },
+            "show interface description": {
+                "command": "show interface description",
+                "output": [
+                    "Interface                      Status         Protocol Description",
+                    "Et0/0                          up             up       ARISTA-1-VLAN200",
+                    "Et0/1                          up             up",
+                    "Et0/2                          up             up       IOU2",
+                    "Et0/3                          admin down     down",
+                    "Et1/0                          admin down     down",
+                    "Et1/1                          admin down     down",
+                    "Et1/2                          admin down     down",
+                    "Et1/3                          up             up",
+                    "Se2/0                          admin down     down",
+                    "Se2/1                          admin down     down",
+                    "Se2/2                          admin down     down",
+                    "Se2/3                          admin down     down",
+                    "Se3/0                          admin down     down",
+                    "Se3/1                          admin down     down",
+                    "Se3/2                          admin down     down",
+                    "Se3/3                          admin down     down",
+                    "Lo99                           up             up       TESTING POST ACTIONS"
+                ]
+            }
+        }
+    }
+][
+    {
+        "IOU2": {
+            "version_summary": {
+                "command": "show version | include uptime",
+                "output": [
+                    "IOU2 uptime is 6 hours, 59 minutes"
+                ]
+            },
+            "interface_status": {
+                "command": "show ip interface brief | exclude unassigned",
+                "output": [
+                    "Interface                  IP-Address      OK? Method Status                Protocol",
+                    "Ethernet0/0                172.16.24.2     YES NVRAM  up                    up",
+                    "Ethernet0/1                172.16.12.2     YES NVRAM  up                    up",
+                    "Ethernet0/2                172.16.124.2    YES NVRAM  up                    up"
+                ]
+            },
+            "show ip eigrp neighbor": {
+                "command": "show ip eigrp neighbor",
+                "output": [
+                    "EIGRP-IPv4 Neighbors for AS(100)",
+                    "H   Address                 Interface              Hold Uptime   SRTT   RTO  Q  Seq",
+                    "                                                   (sec)         (ms)       Cnt Num",
+                    "3   172.16.24.4             Et0/0                    13 04:24:08    6   100  0  78",
+                    "2   172.16.12.1             Et0/1                    11 04:24:08   49   294  0  59",
+                    "1   172.16.124.4            Et0/2                    14 04:24:08    9   100  0  79",
+                    "0   172.16.124.1            Et0/2                    14 04:24:08   41   246  0  58"
+                ]
+            },
+            "show interface description": {
+                "command": "show interface description",
+                "output": [
+                    "Interface                      Status         Protocol Description",
+                    "Et0/0                          up             up",
+                    "Et0/1                          up             up       IOU1",
+                    "Et0/2                          up             up",
+                    "Et0/3                          admin down     down",
+                    "Et1/0                          admin down     down",
+                    "Et1/1                          admin down     down",
+                    "Et1/2                          admin down     down",
+                    "Et1/3                          admin down     down",
+                    "Se2/0                          admin down     down",
+                    "Se2/1                          admin down     down",
+                    "Se2/2                          admin down     down",
+                    "Se2/3                          admin down     down",
+                    "Se3/0                          admin down     down",
+                    "Se3/1                          admin down     down",
+                    "Se3/2                          admin down     down",
+                    "Se3/3                          admin down     down"
+                ]
+            }
+        }
+    }
+][
+    {
+        "IOU3": {
+            "version_summary": {
+                "command": "show version | include uptime",
+                "output": [
+                    "IOU3 uptime is 6 hours, 59 minutes"
+                ]
+            },
+            "interface_status": {
+                "command": "show ip interface brief | exclude unassigned",
+                "output": [
+                    "Interface                  IP-Address      OK? Method Status                Protocol",
+                    "Ethernet0/0                172.16.100.2    YES NVRAM  up                    up",
+                    "Ethernet0/1                172.16.34.3     YES NVRAM  up                    up"
+                ]
+            },
+            "show ip eigrp neighbor": {
+                "command": "show ip eigrp neighbor",
+                "output": [
+                    "EIGRP-IPv4 Neighbors for AS(100)",
+                    "H   Address                 Interface              Hold Uptime   SRTT   RTO  Q  Seq",
+                    "                                                   (sec)         (ms)       Cnt Num",
+                    "0   172.16.34.4             Et0/1                    12 04:24:21   53   318  0  77"
+                ]
+            },
+            "show interface description": {
+                "command": "show interface description",
+                "output": [
+                    "Interface                      Status         Protocol Description",
+                    "Et0/0                          up             up       ARISTA-1-VLAN100",
+                    "Et0/1                          up             up       IOU4",
+                    "Et0/2                          admin down     down",
+                    "Et0/3                          admin down     down",
+                    "Et1/0                          admin down     down",
+                    "Et1/1                          admin down     down",
+                    "Et1/2                          admin down     down",
+                    "Et1/3                          admin down     down",
+                    "Se2/0                          admin down     down",
+                    "Se2/1                          admin down     down",
+                    "Se2/2                          admin down     down",
+                    "Se2/3                          admin down     down",
+                    "Se3/0                          admin down     down",
+                    "Se3/1                          admin down     down",
+                    "Se3/2                          admin down     down",
+                    "Se3/3                          admin down     down"
+                ]
+            }
+        }
+    }
+][
+    {
+        "IOU4": {
+            "version_summary": {
+                "command": "show version | include uptime",
+                "output": [
+                    "IOU4 uptime is 6 hours, 59 minutes"
+                ]
+            },
+            "interface_status": {
+                "command": "show ip interface brief | exclude unassigned",
+                "output": [
+                    "Interface                  IP-Address      OK? Method Status                Protocol",
+                    "Ethernet0/0                172.16.24.4     YES NVRAM  up                    up",
+                    "Ethernet0/1                172.16.34.4     YES NVRAM  up                    up",
+                    "Ethernet0/2                172.16.124.4    YES NVRAM  up                    up"
+                ]
+            },
+            "show ip eigrp neighbor": {
+                "command": "show ip eigrp neighbor",
+                "output": [
+                    "EIGRP-IPv4 Neighbors for AS(100)",
+                    "H   Address                 Interface              Hold Uptime   SRTT   RTO  Q  Seq",
+                    "                                                   (sec)         (ms)       Cnt Num",
+                    "3   172.16.24.2             Et0/0                    10 04:24:27    7   100  0  87",
+                    "2   172.16.124.2            Et0/2                    12 04:24:27    9   100  0  86",
+                    "1   172.16.124.1            Et0/2                    14 04:24:27   56   336  0  58",
+                    "0   172.16.34.3             Et0/1                    10 04:24:27    6   100  0  23"
+                ]
+            },
+            "show interface description": {
+                "command": "show interface description",
+                "output": [
+                    "Interface                      Status         Protocol Description",
+                    "Et0/0                          up             up",
+                    "Et0/1                          up             up       IOU3",
+                    "Et0/2                          up             up",
+                    "Et0/3                          admin down     down",
+                    "Et1/0                          admin down     down",
+                    "Et1/1                          admin down     down",
+                    "Et1/2                          admin down     down",
+                    "Et1/3                          admin down     down",
+                    "Se2/0                          admin down     down",
+                    "Se2/1                          admin down     down",
+                    "Se2/2                          admin down     down",
+                    "Se2/3                          admin down     down",
+                    "Se3/0                          admin down     down",
+                    "Se3/1                          admin down     down",
+                    "Se3/2                          admin down     down",
+                    "Se3/3                          admin down     down"
+                ]
+            }
         }
     }
 ]

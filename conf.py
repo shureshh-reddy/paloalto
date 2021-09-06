@@ -18,59 +18,11 @@ WAIT_BETWEEN_PING = 15
 WAIT_AFTER_REBOOT = 60
 WAIT_FOR_CONTROL_PLAIN_CONVERGENCE = 120
 
-class AristaState:
+class DeviceState:
     
-    def __init__(self, commands=None):
-        self.debug_commands = {'version_summary': {'command': 'show version | include uptime', 'output': {}},
-                                'route_summary': {'command': 'show ip route summary', 'output': {}},
-                                'interface_status': {'command': 'show interfaces status connected', 'output': {}}
-                            }
-        if commands is not None:
-            for command in commands:
-                out = {'command': None, 'output': {}}
-                out['command'] = command
-                self.debug_commands[command] = out
-
-        print(self.debug_commands)
-    
-    def find_key(self, data, target_key):
-        for key, value in data.items():
-            if isinstance(value, dict):
-                yield from self.find_key(value, target_key)
-            elif key == target_key:
-                yield value
-    
-    def _set_running_version(self):
-        output = self.find_key(self.debug_commands['version_summary']['output'], 'version')
-        for item in output:
-            self.running_version = item
-    
-    def _set_model_name(self):
-        output = self.find_key(self.debug_commands['version_summary']['output'], 'modelName')
-        for item in output:
-            self.model_name = item
-
-    def _set_total_routes(self):
-        total_ip_routes = 0
-        output = self.find_key(self.debug_commands['route_summary']['output'], 'totalRoutes')
-        for item in output:
-            total_ip_routes = int(item)
-        self.total_ip_routes = total_ip_routes
-
-    def populate(self, run_command):
-        for k in self.debug_commands.keys():
-            self.debug_commands[k]['output'] = \
-                run_command(self.debug_commands[k]['command'])
-        
-        return self.debug_commands
-
-class CiscoState:
-    
-    def __init__(self, commands=None):
-        self.debug_commands = {'version_summary': {'command': 'show version | include uptime', 'output': {}},
-                                'interface_status': {'command': 'show ip interface brief | exclude unassigned', 'output': {}}
-                            }
-
+    def __init__(self, commands=None, static_commands=None, conn=None):
+        self.debug_commands = static_commands
+        self.conn = conn
         if commands is not None:
             for command in commands:
                 out = {'command': None, 'output': {}}
@@ -101,46 +53,26 @@ class CiscoState:
             total_ip_routes = int(item)
         self.total_ip_routes = total_ip_routes
 
-    def populate(self, run_command):
+    def populate(self):
+        resp = self.conn.send_command('show version')
+        output = resp.textfsm_parse_output()
+        hostname = output[0]['hostname']
+
         for k in self.debug_commands.keys():
             self.debug_commands[k]['output'] = \
-                run_command(self.debug_commands[k]['command'])
+                self.run_command(self.debug_commands[k]['command'])
         
-        return self.debug_commands
-
-class DeviceHandler:
-
-    def __init__(self, ip_address):
-        self.device = {
-            "host": ip_address,
-            "auth_username": "cisco",
-            "auth_password": "cisco",
-            "auth_strict_key": False,
-            "ssh_config_file": '~/.ssh/config'
-        }
+        return hostname, self.debug_commands
     
-    def arista_run_command(self, cmd):
+    def run_command(self, cmd):
         try:
-            with EOSDriver(**self.device) as conn:
-                resp = conn.send_command(cmd)
-                output = resp.textfsm_parse_output()
-                return output
-                #return resp.result
+            resp = self.conn.send_command(cmd)
+            data = resp.result
+            output = data.split("\n")
+            return output
         except Exception as e:
             print(e)
             return None
-    
-    def cisco_run_command(self, cmd):
-        try:
-            with IOSXEDriver(**self.device) as conn:
-                resp = conn.send_command(cmd)
-                output = resp.textfsm_parse_output()
-                return output
-                #return resp.result
-        except Exception as e:
-            print(e)
-            return None
-
 
 def main():
     #try:
@@ -159,6 +91,14 @@ def main():
     except Exception as e:
         pass
     '''
+    cisco_commands = {'version_summary': {'command': 'show version | include uptime', 'output': {}},
+                      'interface_status': {'command': 'show ip interface brief | exclude unassigned', 'output': {}}
+                    }
+                            
+    arista_commands = {'version_summary': {'command': 'show version | include uptime', 'output': {}},
+                        'route_summary': {'command': 'show ip route summary', 'output': {}},
+                        'interface_status': {'command': 'show interfaces status connected', 'output': {}}
+                    }
 
     try:
         operation_method = input('Enter operation method "pre" or "post": ')
@@ -168,34 +108,45 @@ def main():
     except Exception as e:
         pass
 
-    
-
     if operation_method.lower() == 'pre' or operation_method.lower() == 'post':
         with open(file_name, 'r') as f:
             user_data = yaml.load(f)
-        state = []
         os_types = user_data['devices'].keys()
+        f = open(rpd_id+'_'+date+'_'+'.json', 'w')
+        f.close()
         for device_os in os_types:
             for each_os in user_data['devices'][device_os]:
                 ip_address = each_os['ip_address']
-                commands = each_os['commands']
+                commands = each_os.get('commands')
 
                 for ip in ip_address:
-                    device_state = DeviceHandler(ip)
+                    config_state = []
+                    device = {
+                    "host": ip,
+                    "auth_username": "cisco",
+                    "auth_password": "cisco",
+                    "auth_strict_key": False,
+                    "ssh_config_file": '~/.ssh/config'
+                    }
                     if device_os.lower() == 'arista_eos':
-                        if commands is not None:
-                            arista_config = AristaState(commands)
-                            state_output = arista_config.populate(device_state.arista_run_command)
-                            state.append(state_output)
-
+                        out = {}
+                        with EOSDriver(**device) as conn:
+                            arista_config = DeviceState(commands, arista_commands, conn)
+                            hostname, state_output = arista_config.populate()
+                            out[hostname] = state_output
+                            config_state.append(out)
                     elif device_os.lower() == 'cisco_ios':
-                        if commands is not None:
-                            cisco_config = CiscoState(commands)
-                            state_output = cisco_config.populate(device_state.cisco_run_command)
-                            state.append(state_output)
+                        out = {}
+                        with IOSXEDriver(**device) as conn:
+                            cisco_config = DeviceState(commands, cisco_commands, conn)
+                            hostname, state_output = cisco_config.populate()
+                            out[hostname] = state_output
+                            config_state.append(out)
+                            #print(out)
+                            #print(config_state)
 							
-        with open(rpd_id+'_'+date+'_'+'.json', 'w') as file:
-            json.dump(state, file, indent=4)
+                    with open(rpd_id+'_'+date+'_'+'.json', 'a') as file:
+                        json.dump(config_state, file, indent=4)
 
         
         #if os.path.exists('pre_'+rpd_id+'.json') and os.path.exists('post_'+rpd_id+'.json'):
@@ -212,8 +163,6 @@ def main():
                 fp.write(html)
 
 			'''
-    
-    
 
 if __name__ == "__main__":
     main()

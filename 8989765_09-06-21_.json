@@ -7,12 +7,12 @@
                     "version": "",
                     "rommon": "",
                     "hostname": "IOU1",
-                    "uptime": "1 hour, 47 minutes",
+                    "uptime": "1 hour, 49 minutes",
                     "uptime_years": "",
                     "uptime_weeks": "",
                     "uptime_days": "",
                     "uptime_hours": "1",
-                    "uptime_minutes": "47",
+                    "uptime_minutes": "49",
                     "reload_reason": "",
                     "running_image": "",
                     "hardware": [],
@@ -60,7 +60,7 @@
                     "address": "172.16.124.2",
                     "interface": "Et0/1",
                     "hold": "12",
-                    "uptime": "00:46:15",
+                    "uptime": "00:48:06",
                     "srtt": "5",
                     "rto": "100",
                     "q_cnt": "0",
@@ -70,8 +70,8 @@
                     "as": "100",
                     "address": "172.16.124.4",
                     "interface": "Et0/1",
-                    "hold": "12",
-                    "uptime": "00:46:15",
+                    "hold": "11",
+                    "uptime": "00:48:06",
                     "srtt": "1",
                     "rto": "100",
                     "q_cnt": "0",
@@ -82,7 +82,7 @@
                     "address": "172.16.12.2",
                     "interface": "Et0/2",
                     "hold": "12",
-                    "uptime": "00:46:15",
+                    "uptime": "00:48:06",
                     "srtt": "1",
                     "rto": "100",
                     "q_cnt": "0",
@@ -191,9 +191,9 @@
                 },
                 {
                     "port": "Lo99",
-                    "status": "admin down",
-                    "protocol": "down",
-                    "descrip": "TESTING CHANGES FROM RESP"
+                    "status": "up",
+                    "protocol": "up",
+                    "descrip": "POST CHANGES TESTING"
                 }
             ]
         }

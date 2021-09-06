@@ -1,30 +1,32 @@
 [
     {
         "version_summary": {
-            "command": "show version | include uptime",
+            "command": "show version",
             "output": [
                 {
                     "version": "",
-                    "rommon": "",
+                    "rommon": "Bootstrap",
                     "hostname": "IOU1",
-                    "uptime": "1 hour, 49 minutes",
+                    "uptime": "2 hours, 1 minute",
                     "uptime_years": "",
                     "uptime_weeks": "",
                     "uptime_days": "",
-                    "uptime_hours": "1",
-                    "uptime_minutes": "49",
-                    "reload_reason": "",
-                    "running_image": "",
+                    "uptime_hours": "2",
+                    "uptime_minutes": "1",
+                    "reload_reason": "Unknown reason",
+                    "running_image": "/opt/gns3/images/IOU/i86bi-linux-l3-adventerprisek9-15.2.4M1.bi",
                     "hardware": [],
-                    "serial": [],
-                    "config_register": "",
+                    "serial": [
+                        "2048001"
+                    ],
+                    "config_register": "0x0",
                     "mac": [],
                     "restarted": ""
                 }
             ]
         },
         "interface_status": {
-            "command": "show ip interface brief | exclude unassigned",
+            "command": "show ip interface brief",
             "output": [
                 {
                     "intf": "Ethernet0/0",
@@ -45,8 +47,86 @@
                     "proto": "up"
                 },
                 {
+                    "intf": "Ethernet0/3",
+                    "ipaddr": "unassigned",
+                    "status": "administratively down",
+                    "proto": "down"
+                },
+                {
+                    "intf": "Ethernet1/0",
+                    "ipaddr": "unassigned",
+                    "status": "administratively down",
+                    "proto": "down"
+                },
+                {
+                    "intf": "Ethernet1/1",
+                    "ipaddr": "unassigned",
+                    "status": "administratively down",
+                    "proto": "down"
+                },
+                {
+                    "intf": "Ethernet1/2",
+                    "ipaddr": "unassigned",
+                    "status": "administratively down",
+                    "proto": "down"
+                },
+                {
                     "intf": "Ethernet1/3",
                     "ipaddr": "192.168.91.250",
+                    "status": "up",
+                    "proto": "up"
+                },
+                {
+                    "intf": "Serial2/0",
+                    "ipaddr": "unassigned",
+                    "status": "administratively down",
+                    "proto": "down"
+                },
+                {
+                    "intf": "Serial2/1",
+                    "ipaddr": "unassigned",
+                    "status": "administratively down",
+                    "proto": "down"
+                },
+                {
+                    "intf": "Serial2/2",
+                    "ipaddr": "unassigned",
+                    "status": "administratively down",
+                    "proto": "down"
+                },
+                {
+                    "intf": "Serial2/3",
+                    "ipaddr": "unassigned",
+                    "status": "administratively down",
+                    "proto": "down"
+                },
+                {
+                    "intf": "Serial3/0",
+                    "ipaddr": "unassigned",
+                    "status": "administratively down",
+                    "proto": "down"
+                },
+                {
+                    "intf": "Serial3/1",
+                    "ipaddr": "unassigned",
+                    "status": "administratively down",
+                    "proto": "down"
+                },
+                {
+                    "intf": "Serial3/2",
+                    "ipaddr": "unassigned",
+                    "status": "administratively down",
+                    "proto": "down"
+                },
+                {
+                    "intf": "Serial3/3",
+                    "ipaddr": "unassigned",
+                    "status": "administratively down",
+                    "proto": "down"
+                },
+                {
+                    "intf": "Loopback99",
+                    "ipaddr": "unassigned",
                     "status": "up",
                     "proto": "up"
                 }
@@ -60,7 +140,7 @@
                     "address": "172.16.124.2",
                     "interface": "Et0/1",
                     "hold": "12",
-                    "uptime": "00:48:06",
+                    "uptime": "00:59:45",
                     "srtt": "5",
                     "rto": "100",
                     "q_cnt": "0",
@@ -70,8 +150,8 @@
                     "as": "100",
                     "address": "172.16.124.4",
                     "interface": "Et0/1",
-                    "hold": "11",
-                    "uptime": "00:48:06",
+                    "hold": "12",
+                    "uptime": "00:59:45",
                     "srtt": "1",
                     "rto": "100",
                     "q_cnt": "0",
@@ -81,8 +161,8 @@
                     "as": "100",
                     "address": "172.16.12.2",
                     "interface": "Et0/2",
-                    "hold": "12",
-                    "uptime": "00:48:06",
+                    "hold": "13",
+                    "uptime": "00:59:45",
                     "srtt": "1",
                     "rto": "100",
                     "q_cnt": "0",
@@ -193,7 +273,7 @@
                     "port": "Lo99",
                     "status": "up",
                     "protocol": "up",
-                    "descrip": "POST CHANGES TESTING"
+                    "descrip": "ACTIONS"
                 }
             ]
         }

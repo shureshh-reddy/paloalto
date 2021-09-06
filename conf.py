@@ -21,7 +21,7 @@ WAIT_FOR_CONTROL_PLAIN_CONVERGENCE = 120
 class AristaState:
     
     def __init__(self, commands=None):
-        self.debug_commands = {'version_summary': {'command': 'show version | ', 'output': {}},
+        self.debug_commands = {'version_summary': {'command': 'show version', 'output': {}},
                                 'route_summary': {'command': 'show ip route summary', 'output': {}},
                                 'interface_status': {'command': 'show interfaces status connected', 'output': {}}
                             }
@@ -67,8 +67,8 @@ class AristaState:
 class CiscoState:
     
     def __init__(self, commands=None):
-        self.debug_commands = {'version_summary': {'command': 'show version | include uptime', 'output': {}},
-                                'interface_status': {'command': 'show ip interface brief | exclude unassigned', 'output': {}}
+        self.debug_commands = {'version_summary': {'command': 'show version', 'output': {}},
+                                'interface_status': {'command': 'show ip interface brief', 'output': {}}
                             }
 
         if commands is not None:

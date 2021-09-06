@@ -7,12 +7,12 @@
                     "version": "",
                     "rommon": "",
                     "hostname": "IOU1",
-                    "uptime": "45 minutes",
+                    "uptime": "48 minutes",
                     "uptime_years": "",
                     "uptime_weeks": "",
                     "uptime_days": "",
                     "uptime_hours": "",
-                    "uptime_minutes": "45",
+                    "uptime_minutes": "48",
                     "reload_reason": "",
                     "running_image": "",
                     "hardware": [],
@@ -59,8 +59,8 @@
                     "as": "100",
                     "address": "172.16.124.2",
                     "interface": "Et0/1",
-                    "hold": "14",
-                    "uptime": "00:42:54",
+                    "hold": "12",
+                    "uptime": "00:45:59",
                     "srtt": "656",
                     "rto": "3936",
                     "q_cnt": "0",
@@ -70,8 +70,8 @@
                     "as": "100",
                     "address": "172.16.124.4",
                     "interface": "Et0/1",
-                    "hold": "12",
-                    "uptime": "00:42:54",
+                    "hold": "14",
+                    "uptime": "00:45:59",
                     "srtt": "818",
                     "rto": "4908",
                     "q_cnt": "0",
@@ -82,7 +82,7 @@
                     "address": "172.16.12.2",
                     "interface": "Et0/2",
                     "hold": "11",
-                    "uptime": "00:42:54",
+                    "uptime": "00:45:59",
                     "srtt": "1022",
                     "rto": "5000",
                     "q_cnt": "0",
@@ -188,6 +188,12 @@
                     "status": "admin down",
                     "protocol": "down",
                     "descrip": ""
+                },
+                {
+                    "port": "Lo99",
+                    "status": "up",
+                    "protocol": "up",
+                    "descrip": "TESTING CHANGES"
                 }
             ]
         }

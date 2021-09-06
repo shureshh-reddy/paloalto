@@ -4,7 +4,7 @@
             "version_summary": {
                 "command": "show version | include uptime",
                 "output": [
-                    "IOU1 uptime is 6 hours, 59 minutes"
+                    "IOU1 uptime is 7 hours, 2 minutes"
                 ]
             },
             "interface_status": {
@@ -23,9 +23,9 @@
                     "EIGRP-IPv4 Neighbors for AS(100)",
                     "H   Address                 Interface              Hold Uptime   SRTT   RTO  Q  Seq",
                     "                                                   (sec)         (ms)       Cnt Num",
-                    "2   172.16.12.2             Et0/2                    10 04:24:05   52   312  0  88",
-                    "1   172.16.124.2            Et0/1                    11 04:24:05   53   318  0  86",
-                    "0   172.16.124.4            Et0/1                    12 04:24:05    8   100  0  79"
+                    "2   172.16.12.2             Et0/2                    13 04:27:22   52   312  0  88",
+                    "1   172.16.124.2            Et0/1                    10 04:27:22   53   318  0  86",
+                    "0   172.16.124.4            Et0/1                    10 04:27:22    8   100  0  79"
                 ]
             },
             "show interface description": {
@@ -48,7 +48,7 @@
                     "Se3/1                          admin down     down",
                     "Se3/2                          admin down     down",
                     "Se3/3                          admin down     down",
-                    "Lo99                           up             up       TESTING POST ACTIONS"
+                    "Lo99                           up             up       FINAL TESTING"
                 ]
             }
         }
@@ -59,7 +59,7 @@
             "version_summary": {
                 "command": "show version | include uptime",
                 "output": [
-                    "IOU2 uptime is 6 hours, 59 minutes"
+                    "IOU2 uptime is 7 hours, 2 minutes"
                 ]
             },
             "interface_status": {
@@ -77,10 +77,10 @@
                     "EIGRP-IPv4 Neighbors for AS(100)",
                     "H   Address                 Interface              Hold Uptime   SRTT   RTO  Q  Seq",
                     "                                                   (sec)         (ms)       Cnt Num",
-                    "3   172.16.24.4             Et0/0                    13 04:24:08    6   100  0  78",
-                    "2   172.16.12.1             Et0/1                    11 04:24:08   49   294  0  59",
-                    "1   172.16.124.4            Et0/2                    14 04:24:08    9   100  0  79",
-                    "0   172.16.124.1            Et0/2                    14 04:24:08   41   246  0  58"
+                    "3   172.16.24.4             Et0/0                    11 04:27:25    6   100  0  78",
+                    "2   172.16.12.1             Et0/1                    11 04:27:25   49   294  0  59",
+                    "1   172.16.124.4            Et0/2                    11 04:27:25    9   100  0  79",
+                    "0   172.16.124.1            Et0/2                    12 04:27:25   41   246  0  58"
                 ]
             },
             "show interface description": {
@@ -102,7 +102,8 @@
                     "Se3/0                          admin down     down",
                     "Se3/1                          admin down     down",
                     "Se3/2                          admin down     down",
-                    "Se3/3                          admin down     down"
+                    "Se3/3                          admin down     down",
+                    "Lo90                           up             up       ADDING LOOPBACK"
                 ]
             }
         }
@@ -113,7 +114,7 @@
             "version_summary": {
                 "command": "show version | include uptime",
                 "output": [
-                    "IOU3 uptime is 6 hours, 59 minutes"
+                    "IOU3 uptime is 7 hours, 2 minutes"
                 ]
             },
             "interface_status": {
@@ -130,7 +131,7 @@
                     "EIGRP-IPv4 Neighbors for AS(100)",
                     "H   Address                 Interface              Hold Uptime   SRTT   RTO  Q  Seq",
                     "                                                   (sec)         (ms)       Cnt Num",
-                    "0   172.16.34.4             Et0/1                    12 04:24:21   53   318  0  77"
+                    "0   172.16.34.4             Et0/1                    14 04:27:38   53   318  0  77"
                 ]
             },
             "show interface description": {
@@ -163,7 +164,7 @@
             "version_summary": {
                 "command": "show version | include uptime",
                 "output": [
-                    "IOU4 uptime is 6 hours, 59 minutes"
+                    "IOU4 uptime is 7 hours, 2 minutes"
                 ]
             },
             "interface_status": {
@@ -181,10 +182,10 @@
                     "EIGRP-IPv4 Neighbors for AS(100)",
                     "H   Address                 Interface              Hold Uptime   SRTT   RTO  Q  Seq",
                     "                                                   (sec)         (ms)       Cnt Num",
-                    "3   172.16.24.2             Et0/0                    10 04:24:27    7   100  0  87",
-                    "2   172.16.124.2            Et0/2                    12 04:24:27    9   100  0  86",
-                    "1   172.16.124.1            Et0/2                    14 04:24:27   56   336  0  58",
-                    "0   172.16.34.3             Et0/1                    10 04:24:27    6   100  0  23"
+                    "3   172.16.24.2             Et0/0                    14 04:27:44    7   100  0  87",
+                    "2   172.16.124.2            Et0/2                    11 04:27:44    9   100  0  86",
+                    "1   172.16.124.1            Et0/2                    11 04:27:44   56   336  0  58",
+                    "0   172.16.34.3             Et0/1                    12 04:27:44    6   100  0  23"
                 ]
             },
             "show interface description": {

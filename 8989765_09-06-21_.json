@@ -2,7 +2,7 @@
     {
         "version_summary": {
             "command": "show version | include uptime",
-            "output": "IOU1 uptime is 1 hour, 42 minutes"
+            "output": "IOU1 uptime is 1 hour, 45 minutes"
         },
         "interface_status": {
             "command": "show ip interface brief | exclude unassigned",
@@ -10,11 +10,11 @@
         },
         "show ip eigrp neighbor": {
             "command": "show ip eigrp neighbor",
-            "output": "EIGRP-IPv4 Neighbors for AS(100)\nH   Address                 Interface              Hold Uptime   SRTT   RTO  Q  Seq\n                                                   (sec)         (ms)       Cnt Num\n2   172.16.124.2            Et0/1                    14 00:41:16    5   100  0  38\n1   172.16.124.4            Et0/1                    14 00:41:16    1   100  0  34\n0   172.16.12.2             Et0/2                    13 00:41:16    1   100  0  39"
+            "output": "EIGRP-IPv4 Neighbors for AS(100)\nH   Address                 Interface              Hold Uptime   SRTT   RTO  Q  Seq\n                                                   (sec)         (ms)       Cnt Num\n2   172.16.124.2            Et0/1                    11 00:43:57    5   100  0  38\n1   172.16.124.4            Et0/1                    11 00:43:57    1   100  0  34\n0   172.16.12.2             Et0/2                    12 00:43:57    1   100  0  39"
         },
         "show interface description": {
             "command": "show interface description",
-            "output": "Interface                      Status         Protocol Description\nEt0/0                          up             up       ARISTA-1-VLAN200\nEt0/1                          up             up\nEt0/2                          up             up       IOU2\nEt0/3                          admin down     down\nEt1/0                          admin down     down\nEt1/1                          admin down     down\nEt1/2                          admin down     down\nEt1/3                          up             up\nSe2/0                          admin down     down\nSe2/1                          admin down     down\nSe2/2                          admin down     down\nSe2/3                          admin down     down\nSe3/0                          admin down     down\nSe3/1                          admin down     down\nSe3/2                          admin down     down\nSe3/3                          admin down     down\nLo99                           up             up       TESTING CHANGES"
+            "output": "Interface                      Status         Protocol Description\nEt0/0                          up             up       ARISTA-1-VLAN200\nEt0/1                          up             up\nEt0/2                          up             up       IOU2\nEt0/3                          admin down     down\nEt1/0                          admin down     down\nEt1/1                          admin down     down\nEt1/2                          admin down     down\nEt1/3                          up             up\nSe2/0                          admin down     down\nSe2/1                          admin down     down\nSe2/2                          admin down     down\nSe2/3                          admin down     down\nSe3/0                          admin down     down\nSe3/1                          admin down     down\nSe3/2                          admin down     down\nSe3/3                          admin down     down\nLo99                           admin down     down     TESTING CHANGES FROM RESP"
         }
     }
 ]

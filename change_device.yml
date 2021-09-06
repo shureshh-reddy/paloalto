@@ -2,14 +2,6 @@ devices:
   cisco_ios:
     - ip_address:
         - 192.168.91.250
-        - 172.16.124.2
-        - 172.16.34.3
-      commands:
-        - show ip eigrp neighbor
-        - show interface description
-    
-    - ip_address:
-        - 172.16.124.4
       commands:
         - show ip eigrp neighbor
         - show interface description

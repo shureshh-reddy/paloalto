@@ -111,9 +111,8 @@ class CiscoState:
 class DeviceHandler:
 
     def __init__(self, ip_address):
-        self.ip_address = ip_address
         self.device = {
-            "host": self.ip_address,
+            "host": ip_address,
             "auth_username": "cisco",
             "auth_password": "cisco",
             "auth_strict_key": False,
@@ -124,9 +123,9 @@ class DeviceHandler:
         try:
             with EOSDriver(**self.device) as conn:
                 resp = conn.send_command(cmd)
-                #output = resp.textfsm_parse_output()
-                #return output
-                return resp
+                output = resp.textfsm_parse_output()
+                return output
+                #return resp
         except Exception as e:
             print(e)
             return None
@@ -135,9 +134,9 @@ class DeviceHandler:
         try:
             with IOSXEDriver(**self.device) as conn:
                 resp = conn.send_command(cmd)
-                #output = resp.textfsm_parse_output()
-                #return output
-                return resp
+                output = resp.textfsm_parse_output()
+                return output
+                #return resp
         except Exception as e:
             print(e)
             return None
@@ -163,8 +162,8 @@ def main():
 
     try:
         operation_method = input('Enter operation method "pre" or "post": ')
-        rpd_id = '722544'
-        date = '09-03-21'
+        rpd_id = '8989765'
+        date = '09-06-21'
         file_name = 'change_device.yml'
     except Exception as e:
         pass
@@ -195,8 +194,8 @@ def main():
                             state_output = cisco_config.populate(device_state.cisco_run_command)
                             state.append(state_output)
 							
-                    with open(rpd_id+'_'+date+'_'+'.json', 'w') as file:
-                        json.dump(device_state, file, indent=4)
+        with open(rpd_id+'_'+date+'_'+'.json', 'w') as file:
+            json.dump(state, file, indent=4)
 
         
         #if os.path.exists('pre_'+rpd_id+'.json') and os.path.exists('post_'+rpd_id+'.json'):

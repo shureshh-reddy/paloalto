@@ -12,7 +12,11 @@ from IPython import display
 from scrapli.driver.core import IOSXEDriver, EOSDriver
 
 class DeviceState:
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 2fa7dd69782866253175a3fbc6c52a6b31fbf1d4
     def __init__(self, host_command = None, commands=None, static_commands=None, conn=None):
         self.debug_commands = static_commands
         self.host_command = host_command
@@ -28,14 +32,24 @@ class DeviceState:
         resp = self.conn.send_command(self.host_command)
         output = resp.textfsm_parse_output()
         hostname = output[0]['hostname']
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> 2fa7dd69782866253175a3fbc6c52a6b31fbf1d4
         for k in self.debug_commands.keys():
             self.debug_output[hostname+'_'+k] = {}
             cmd = self.debug_commands[k]['command']
             self.debug_output[hostname+'_'+k]['command'] = cmd
             self.debug_output[hostname+'_'+k]['output'] = self.run_command(self.debug_commands[k]['command'])
+<<<<<<< HEAD
         return hostname, self.debug_output
 
+=======
+   
+        return hostname, self.debug_output
+    
+>>>>>>> 2fa7dd69782866253175a3fbc6c52a6b31fbf1d4
     def run_command(self, cmd):
         try:
             resp = self.conn.send_command(cmd)
@@ -49,7 +63,11 @@ class DeviceState:
 def main():
     try:
         operation_method = input('Enter operation method "pre" or "post": ')
+<<<<<<< HEAD
         rpd = input('Enter RPD id: ')
+=======
+        rpd = input('Enter RPD id: ')  #need to remove rpd characters
+>>>>>>> 2fa7dd69782866253175a3fbc6c52a6b31fbf1d4
         date = input('Enter date in MM-DD-YY format: ')
         file_name = input('Device details file path: ')
     except Exception as e:
@@ -57,6 +75,7 @@ def main():
     rpd_id = re.sub("\D", "", rpd)
     
     cisco_commands = {'version_summary': {'command': 'show version | include uptime', 'output': {}},
+<<<<<<< HEAD
                       'running_config': {'command': 'show running-config', 'output': {}}
                     }
 
@@ -65,6 +84,15 @@ def main():
                     }
 
 
+=======
+                      'interface_status': {'command': 'show ip interface brief | exclude unassigned', 'output': {}}
+                    }
+                            
+    arista_commands = {'version_summary': {'command': 'show version | include Uptime', 'output': {}},
+                      'interface_status': {'command': 'show ip interface brief | exclude unassigned', 'output': {}}
+                    }
+
+>>>>>>> 2fa7dd69782866253175a3fbc6c52a6b31fbf1d4
     if operation_method.lower() == 'pre' or operation_method.lower() == 'post':
         with open(file_name, 'r') as f:
             user_data = yaml.load(f)
@@ -97,7 +125,11 @@ def main():
                                 config_state.append(out)
                         except Exception as e:
                             print(e)
+<<<<<<< HEAD
 
+=======
+                            
+>>>>>>> 2fa7dd69782866253175a3fbc6c52a6b31fbf1d4
                     elif device_os.lower() == 'cisco_ios':
                         device["transport"] = "telnet"
                         out = {}
@@ -109,7 +141,11 @@ def main():
                                 config_state.append(out)
                         except Exception as e:
                             print(e)
+<<<<<<< HEAD
 
+=======
+							
+>>>>>>> 2fa7dd69782866253175a3fbc6c52a6b31fbf1d4
                     with open(rpd_id+'_'+date+'_'+'.json', 'a') as file:
                         json.dump(config_state, file, indent=4)
 

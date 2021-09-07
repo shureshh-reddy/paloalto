@@ -2,8 +2,8 @@ import yaml
 import sys
 import json
 import os
-import pprint
 import re
+import pprint
 import difflib
 
 from jycm.helper import make_ignore_order_func
@@ -34,7 +34,6 @@ class DeviceState:
             cmd = self.debug_commands[k]['command']
             self.debug_output[hostname+'_'+k]['command'] = cmd
             self.debug_output[hostname+'_'+k]['output'] = self.run_command(self.debug_commands[k]['command'])
-
         return hostname, self.debug_output
 
     def run_command(self, cmd):
@@ -53,7 +52,6 @@ def main():
         rpd = input('Enter RPD id: ')
         date = input('Enter date in MM-DD-YY format: ')
         file_name = input('Device details file path: ')
-
     except Exception as e:
         pass
     rpd_id = re.sub("\D", "", rpd)
@@ -65,6 +63,7 @@ def main():
     arista_commands = {'version_summary': {'command': 'show version | include Uptime', 'output': {}},
                       'running_config': {'command': 'show running-config', 'output': {}}
                     }
+
 
     if operation_method.lower() == 'pre' or operation_method.lower() == 'post':
         with open(file_name, 'r') as f:

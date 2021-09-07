@@ -2,6 +2,7 @@ import yaml
 import sys
 import json
 import os
+import re
 import pprint
 import difflib
 
@@ -49,12 +50,13 @@ class DeviceState:
 def main():
     try:
         operation_method = input('Enter operation method "pre" or "post": ')
-        rpd_id = input('Enter RPD id: ')  #need to remove rpd characters
+        rpd = input('Enter RPD id: ')  #need to remove rpd characters
         date = input('Enter date in MM-DD-YY format: ')
         file_name = input('Device details file path: ')
     except Exception as e:
         pass
-
+    rpd_id = re.sub("\D", "", rpd)
+    
     cisco_commands = {'version_summary': {'command': 'show version | include uptime', 'output': {}},
                       'interface_status': {'command': 'show ip interface brief | exclude unassigned', 'output': {}}
                     }

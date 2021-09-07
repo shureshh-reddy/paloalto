@@ -1,15 +1,27 @@
 devices:
   cisco_ios:
     - ip_address:
-        - 192.168.91.250
-        - 172.16.124.2
-        - 172.16.34.3
+        - IOU1
+        - IOU3
+        - IOU4
       commands:
         - show ip eigrp neighbor
         - show interface description
+        - show ip interface brief
+        - show ip route
     
     - ip_address:
-        - 172.16.124.4
+        - IOU2
       commands:
         - show ip eigrp neighbor
         - show interface description
+        - show ip access-lists
+        - show ip route
+  arista_eos:
+    - ip_address:
+        - ARISTA-1
+      commands:
+        - show vlan
+        - show ip bgp summary
+        - show interface description
+        - show ip bgp

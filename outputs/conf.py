@@ -10,19 +10,13 @@ from jycm.jycm import YouchamaJsonDiffer
 from IPython import display
 from scrapli.driver.core import IOSXEDriver, EOSDriver
 
-# Global Constants
-
-LINE = ('-' * 10)
-MAX_PING_WAIT = 300
-WAIT_BETWEEN_PING = 15
-WAIT_AFTER_REBOOT = 60
-WAIT_FOR_CONTROL_PLAIN_CONVERGENCE = 120
-
 class DeviceState:
     
-    def __init__(self, commands=None, static_commands=None, conn=None):
+    def __init__(self, host_command = None, commands=None, static_commands=None, conn=None):
         self.debug_commands = static_commands
+        self.host_command = host_command
         self.conn = conn
+        self.debug_output = {}
         if commands is not None:
             for command in commands:
                 out = {'command': None, 'output': {}}
@@ -54,15 +48,23 @@ class DeviceState:
         self.total_ip_routes = total_ip_routes
 
     def populate(self):
-        resp = self.conn.send_command('show version')
+        resp = self.conn.send_command(self.host_command)
         output = resp.textfsm_parse_output()
         hostname = output[0]['hostname']
 
+        #for k in self.debug_commands.keys():
+        #    self.debug_commands[k]['output'] = \
+        #        self.run_command(self.debug_commands[k]['command'])
+                
         for k in self.debug_commands.keys():
-            self.debug_commands[k]['output'] = \
-                self.run_command(self.debug_commands[k]['command'])
+            self.debug_output[hostname+'_'+k] = {}
+            cmd = self.debug_commands[k]['command']
+            self.debug_output[hostname+'_'+k]['command'] = cmd
+            self.debug_output[hostname+'_'+k]['output'] = self.run_command(self.debug_commands[k]['command'])
+            
         
-        return hostname, self.debug_commands
+        #return hostname, self.debug_commands
+        return hostname, self.debug_output
     
     def run_command(self, cmd):
         try:
@@ -95,9 +97,8 @@ def main():
                       'interface_status': {'command': 'show ip interface brief | exclude unassigned', 'output': {}}
                     }
                             
-    arista_commands = {'version_summary': {'command': 'show version | include uptime', 'output': {}},
-                        'route_summary': {'command': 'show ip route summary', 'output': {}},
-                        'interface_status': {'command': 'show interfaces status connected', 'output': {}}
+    arista_commands = {'version_summary': {'command': 'show version | include Uptime', 'output': {}},
+                      'interface_status': {'command': 'show ip interface brief | exclude unassigned', 'output': {}}
                     }
 
     try:
@@ -125,25 +126,33 @@ def main():
                     "host": ip,
                     "auth_username": "cisco",
                     "auth_password": "cisco",
+                    "auth_secondary": "cisco",
                     "auth_strict_key": False,
+                    "transport": "system",
                     "ssh_config_file": '~/.ssh/config'
                     }
                     if device_os.lower() == 'arista_eos':
                         out = {}
-                        with EOSDriver(**device) as conn:
-                            arista_config = DeviceState(commands, arista_commands, conn)
-                            hostname, state_output = arista_config.populate()
-                            out[hostname] = state_output
-                            config_state.append(out)
+                        try:
+                            with EOSDriver(**device) as conn:
+                                arista_config = DeviceState('show hostname', commands, arista_commands, conn)
+                                hostname, state_output = arista_config.populate()
+                                out[hostname] = state_output
+                                config_state.append(out)
+                        except Exception as e:
+                            print(e)
+                            
                     elif device_os.lower() == 'cisco_ios':
+                        device["transport"] = "telnet"
                         out = {}
-                        with IOSXEDriver(**device) as conn:
-                            cisco_config = DeviceState(commands, cisco_commands, conn)
-                            hostname, state_output = cisco_config.populate()
-                            out[hostname] = state_output
-                            config_state.append(out)
-                            #print(out)
-                            #print(config_state)
+                        try:
+                            with IOSXEDriver(**device) as conn:
+                                cisco_config = DeviceState('show version', commands, cisco_commands, conn)
+                                hostname, state_output = cisco_config.populate()
+                                out[hostname] = state_output
+                                config_state.append(out)
+                        except Exception as e:
+                            print(e)
 							
                     with open(rpd_id+'_'+date+'_'+'.json', 'a') as file:
                         json.dump(config_state, file, indent=4)

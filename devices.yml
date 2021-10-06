@@ -1,0 +1,9 @@
+devices:
+  cisco_ios:
+    - ip_address:
+        - IOU1
+      commands:
+        - show ip eigrp neighbor
+        - show interface description
+        - show ip interface brief
+        - show ip route

@@ -1,14 +1,7 @@
 import yaml
-import sys
 import json
-import os
 import re
-import pprint
-import difflib
-
-from jycm.helper import make_ignore_order_func
-from jycm.jycm import YouchamaJsonDiffer
-from IPython import display
+import os
 from scrapli.driver.core import IOSXEDriver, EOSDriver
 
 class DeviceState:
@@ -55,6 +48,8 @@ def main():
         file_name = input('Device details file path: ')
     except Exception as e:
         pass
+
+    pwd = os.getcwd()
     rpd_id = re.sub("\D", "", rpd)
     
     cisco_commands = {'version_summary': {'command': 'show version | include uptime', 'output': {}},
@@ -69,8 +64,23 @@ def main():
         with open(file_name, 'r') as f:
             user_data = yaml.load(f)
         os_types = user_data['devices'].keys()
-        f = open(rpd_id+'_'+date+'_'+'.json', 'w')
-        f.close()
+
+        rpd_dir_path = os.path.join(pwd, rpd_id)
+        if not os.path.exists(rpd_dir_path):
+            os.mkdir(rpd_dir_path)
+        
+        if operation_method.lower() == 'pre':
+            config_file_path = os.path.join(rpd_dir_path, date+'.txt')
+            f = open(config_file_path, 'w')
+            f.close()
+            
+        elif operation_method.lower() == 'post':
+            rpd_file_path = os.path.join(pwd, rpd_id)
+            dir_list = os.listdir(rpd_file_path)
+            config_file_path = os.path.join(rpd_dir_path, dir_list[0])
+            f = open(config_file_path, 'w')
+            f.close()
+        
         for device_os in os_types:
             for each_os in user_data['devices'][device_os]:
                 ip_address = each_os['ip_address']
@@ -110,7 +120,7 @@ def main():
                         except Exception as e:
                             print(e)
 
-                    with open(rpd_id+'_'+date+'_'+'.json', 'a') as file:
+                    with open(config_file_path, 'a') as file:
                         json.dump(config_state, file, indent=4)
 
 if __name__ == "__main__":

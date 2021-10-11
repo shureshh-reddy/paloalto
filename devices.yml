@@ -1,9 +1,9 @@
 devices:
-  cisco_ios:
+  arista_eos:
     - ip_address:
-        - IOU1
+        - ARISTA-1
       commands:
-        - show ip eigrp neighbor
+        - show vlan
+        - show ip bgp summary
         - show interface description
-        - show ip interface brief
-        - show ip route
+        - show ip bgp

@@ -6,10 +6,11 @@ from scrapli.driver.core import IOSXEDriver, EOSDriver
 
 class DeviceState:
 
-    def __init__(self, host_command = None, commands=None, static_commands=None, conn=None):
+    def __init__(self, host_command = None, commands=None, static_commands=None, conn=None, string=None):
         self.debug_commands = static_commands
         self.host_command = host_command
         self.conn = conn
+        self.encrypt_strings = string
         self.debug_output = {}
         if commands is not None:
             for command in commands:
@@ -35,7 +36,20 @@ class DeviceState:
             resp = self.conn.send_command(cmd)
             data = resp.result
             output = data.split("\n")
-            return output
+            output_data = []
+            for data in output:
+                count = 0
+                for item in self.encrypt_strings:
+                    if item in data:
+                        n = re.sub('(?<={})(.*)'.format(item), ' ***********', count=2000, string=data)
+                        output_data.append(n)
+                        break
+                    else:
+                        count+=1
+                    if len(self.encrypt_strings) == count:
+                        output_data.append(data)
+            return output_data
+
         except Exception as e:
             print(e)
             return None
@@ -59,6 +73,26 @@ def main():
     arista_commands = {'version_summary': {'command': 'show version | include Uptime', 'output': {}},
                       'running_config': {'command': 'show running-config', 'output': {}}
                     }
+    arista_encrypt_strings = ['enable secret',
+                 'chap password',
+                 'pap password',
+                 'password', 
+                 'secret', 
+                 '.*wpa-psk ascii', 
+                 '.*key',
+                 'tacacs-server', 
+                 'crypto isakmp key', 
+                 'snmp-server community', 
+                 'ospf message-digest-key',
+                 'ospf authentication-key',
+                 'authentication text',
+                 'authentication md5 key-string'
+                 'authentication',
+                 'radius server',
+                 'tacacs sever',
+                 'key-string'
+                 ]
+    
 
     if operation_method.lower() == 'pre' or operation_method.lower() == 'post':
         with open(file_name, 'r') as f:
@@ -101,7 +135,7 @@ def main():
                         out = {}
                         try:
                             with EOSDriver(**device) as conn:
-                                arista_config = DeviceState('show hostname', commands, arista_commands, conn)
+                                arista_config = DeviceState('show hostname', commands, arista_commands, conn, string=arista_encrypt_strings)
                                 hostname, state_output = arista_config.populate()
                                 out[hostname] = state_output
                                 config_state.append(out)

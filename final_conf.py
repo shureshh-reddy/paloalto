@@ -73,30 +73,24 @@ def main():
     arista_commands = {'version_summary': {'command': 'show version | include Uptime', 'output': {}},
                       'running_config': {'command': 'show running-config', 'output': {}}
                     }
-    arista_encrypt_strings = ['enable secret',
-                 'chap password',
-                 'pap password',
-                 'password', 
+    encrypt_strings = ['password', 
                  'secret', 
-                 '.*wpa-psk ascii', 
-                 '.*key',
-                 'tacacs-server', 
-                 'crypto isakmp key', 
-                 'snmp-server community', 
-                 'ospf message-digest-key',
-                 'ospf authentication-key',
+                 'wpa-psk ascii', 
+                 'key',
+                 'snmp-server community',
                  'authentication text',
-                 'authentication md5 key-string'
+                 'authentication-key',
                  'authentication',
-                 'radius server',
-                 'tacacs sever',
-                 'key-string'
+                 'key-string',
+                 'version 1',
+                 'version 2c',
+                 'version 3'
                  ]
     
 
     if operation_method.lower() == 'pre' or operation_method.lower() == 'post':
         with open(file_name, 'r') as f:
-            user_data = yaml.load(f)
+            user_data = yaml.safe_load(f)
         os_types = user_data['devices'].keys()
 
         rpd_dir_path = os.path.join(pwd, rpd_id)
@@ -135,7 +129,7 @@ def main():
                         out = {}
                         try:
                             with EOSDriver(**device) as conn:
-                                arista_config = DeviceState('show hostname', commands, arista_commands, conn, string=arista_encrypt_strings)
+                                arista_config = DeviceState('show hostname', commands, arista_commands, conn, string=encrypt_strings)
                                 hostname, state_output = arista_config.populate()
                                 out[hostname] = state_output
                                 config_state.append(out)
@@ -147,7 +141,7 @@ def main():
                         out = {}
                         try:
                             with IOSXEDriver(**device) as conn:
-                                cisco_config = DeviceState('show version', commands, cisco_commands, conn)
+                                cisco_config = DeviceState('show version', commands, cisco_commands, conn, string=encrypt_strings)
                                 hostname, state_output = cisco_config.populate()
                                 out[hostname] = state_output
                                 config_state.append(out)

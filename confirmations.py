@@ -70,11 +70,11 @@ def main():
     pwd = os.getcwd()
     rpd_id = re.sub("\D", "", rpd)
     
-    cisco_commands = {'version_summary': {'command': 'show version | include uptime', 'output': {}},
+    cisco_commands = {
                       'running_config': {'command': 'show running-config', 'output': {}}
                     }
 
-    arista_commands = {'version_summary': {'command': 'show version | include Uptime', 'output': {}},
+    arista_commands = {
                       'running_config': {'command': 'show running-config', 'output': {}}
                     }
     encrypt_strings = ['password', 

@@ -5,23 +5,14 @@ devices:
         - IOU3
         - IOU4
       commands:
-        - show ip eigrp neighbor
-        - show interface description
         - show ip interface brief
-        - show ip route
     
     - ip_address:
         - IOU2
       commands:
-        - show ip eigrp neighbor
-        - show interface description
-        - show ip access-lists
-        - show ip route
+        - show ip interface brief
   arista_eos:
     - ip_address:
         - ARISTA-1
       commands:
-        - show vlan
-        - show ip bgp summary
-        - show interface description
-        - show ip bgp
+        - show ip interface brief

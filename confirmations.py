@@ -2,6 +2,7 @@ import yaml
 import json
 import re
 import os
+import sys
 import git
 import time
 import datetime
@@ -108,9 +109,13 @@ def main():
         elif operation_method.lower() == 'post':
             rpd_file_path = os.path.join(pwd, rpd_id)
             dir_list = os.listdir(rpd_file_path)
-            config_file_path = os.path.join(rpd_dir_path, dir_list[0])
-            f = open(config_file_path, 'w')
-            f.close()
+            if dir_list:
+                config_file_path = os.path.join(rpd_dir_path, dir_list[0])
+                f = open(config_file_path, 'w')
+                f.close()
+            else:
+                print('Please do PRE run before running post')
+                sys.exit(0)
         
         for device_os in os_types:
             for each_os in user_data['devices'][device_os]:

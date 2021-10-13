@@ -1,12 +1,11 @@
 devices:
   cisco_ios:
     - ip_address:
-        - 192.168.91.250
+        - IOU2
       commands:
-        - show ip bgp summary
-        - show interface description
+        - show ip arp
   arista_eos:
     - ip_address:
         - ARISTA-1
       commands:
-        - show ip interface brief
+        - show ip arp

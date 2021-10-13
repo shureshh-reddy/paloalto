@@ -63,7 +63,7 @@ def main():
         operation_method = input('Enter operation method "pre" or "post": ')
         rpd = input('Enter RPD id: ')
         date = input('Enter date in MM-DD-YY format: ')
-        file_name = input('Device details file path: ')
+        file_name = input('Inventory file path: ')
     except Exception as e:
         pass
 
@@ -79,13 +79,13 @@ def main():
                     }
     encrypt_strings = ['password', 
                  'secret', 
-                 'wpa-psk ascii', 
+                 'wpa-psk ascii',
+                 'key-string',
                  'key',
                  'snmp-server community',
                  'authentication text',
                  'authentication-key',
                  'authentication',
-                 'key-string',
                  'version 1',
                  'version 2c',
                  'version 3'

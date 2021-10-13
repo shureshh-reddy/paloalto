@@ -4,6 +4,7 @@ import re
 import os
 import git
 import time
+import datetime
 from scrapli.driver.core import IOSXEDriver, EOSDriver
 
 class DeviceState:
@@ -152,17 +153,19 @@ def main():
 
                     with open(config_file_path, 'a') as file:
                         json.dump(config_state, file, indent=4)
-def git_push():
+    git_push(operation_method.lower())
+
+def git_push(method):
+    current_time = time.strftime("%H:%M", time.gmtime())
     path = os.getcwd()
     if os.path.isdir(path):
         repo = git.Repo(path)
     fetch_commad = 'git fetch origin {}:{}'.format('master', 'master')
     add_command = 'git add .'
-    commit_msg = "git commit -m 'auto commit from system'"
+    commit_msg = "git commit -m '{} changes made at {}'".format(method, current_time)
     os.system(add_command)
     time.sleep(1)
     os.system(commit_msg)
 
 if __name__ == "__main__":
     main()
-    git_push()

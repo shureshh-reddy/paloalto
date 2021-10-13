@@ -4,7 +4,7 @@
             "IOU1_version_summary": {
                 "command": "show version | include uptime",
                 "output": [
-                    "IOU1 uptime is 1 hour, 56 minutes"
+                    "IOU1 uptime is 2 hours, 8 minutes"
                 ]
             },
             "IOU1_running_config": {
@@ -12,8 +12,9 @@
                 "output": [
                     "Building configuration...",
                     "",
-                    "Current configuration : 2652 bytes",
+                    "Current configuration : 2955 bytes",
                     "!",
+                    "! Last configuration change at 09:49:54 UTC Wed Oct 13 2021",
                     "version 1 ***********",
                     "service timestamps debug datetime msec",
                     "service timestamps log datetime msec",
@@ -73,9 +74,17 @@
                     "!",
                     "!",
                     "!",
+                    "interface Loopback88",
+                    " description ADDING TEST",
+                    " no ip address",
+                    "!",
                     "interface Loopback99",
                     " description FINAL TESTING",
                     " no ip address",
+                    "!",
+                    "interface Loopback1000",
+                    " description TESTING",
+                    " ip address 40.40.40.40 255.255.255.0",
                     "!",
                     "interface Ethernet0/0",
                     " description ARISTA-1-VLAN200",
@@ -161,6 +170,8 @@
                     " redistribute eigrp 100",
                     " neighbor BGP-PEER peer-group",
                     " neighbor BGP-PEER remote-as 65555",
+                    " neighbor BGP-PEER-1 peer-group",
+                    " neighbor BGP-PEER-1 remote-as 65555",
                     " neighbor 172.16.200.2 peer-group BGP-PEER",
                     "!",
                     "ip forward-protocol nd",
@@ -195,6 +206,7 @@
                     " login local",
                     " transport input telnet",
                     "!",
+                    "ntp server 192.168.100.200",
                     "ntp server 192.168.100.100",
                     "!",
                     "end"
@@ -206,9 +218,9 @@
                     "EIGRP-IPv4 Neighbors for AS(100)",
                     "H   Address                 Interface              Hold Uptime   SRTT   RTO  Q  Seq",
                     "                                                   (sec)         (ms)       Cnt Num",
-                    "2   172.16.124.2            Et0/1                    11 01:56:42    6   100  0  10",
-                    "1   172.16.124.4            Et0/1                    13 01:56:42    9   100  0  12",
-                    "0   172.16.12.2             Et0/2                    14 01:56:42    8   100  0  11"
+                    "2   172.16.124.2            Et0/1                    11 02:08:24    6   100  0  19",
+                    "1   172.16.124.4            Et0/1                    13 02:08:24    9   100  0  16",
+                    "0   172.16.12.2             Et0/2                    11 02:08:24    7   100  0  18"
                 ]
             },
             "IOU1_show interface description": {
@@ -231,7 +243,9 @@
                     "Se3/1                          admin down     down",
                     "Se3/2                          admin down     down",
                     "Se3/3                          admin down     down",
-                    "Lo99                           up             up       FINAL TESTING"
+                    "Lo88                           up             up       ADDING TEST",
+                    "Lo99                           up             up       FINAL TESTING",
+                    "Lo1000                         up             up       TESTING"
                 ]
             },
             "IOU1_show ip interface brief": {
@@ -254,7 +268,9 @@
                     "Serial3/1                  unassigned      YES NVRAM  administratively down down",
                     "Serial3/2                  unassigned      YES NVRAM  administratively down down",
                     "Serial3/3                  unassigned      YES NVRAM  administratively down down",
-                    "Loopback99                 unassigned      YES unset  up                    up"
+                    "Loopback88                 unassigned      YES unset  up                    up",
+                    "Loopback99                 unassigned      YES unset  up                    up",
+                    "Loopback1000               40.40.40.40     YES manual up                    up"
                 ]
             },
             "IOU1_show ip route": {
@@ -272,13 +288,18 @@
                     "Gateway of last resort is not set",
                     "",
                     "      10.0.0.0/32 is subnetted, 1 subnets",
-                    "D EX     10.10.10.10 [170/309760] via 172.16.124.4, 01:54:18, Ethernet0/1",
+                    "D EX     10.10.10.10 [170/309760] via 172.16.124.4, 02:05:59, Ethernet0/1",
+                    "      40.0.0.0/8 is variably subnetted, 2 subnets, 2 masks",
+                    "C        40.40.40.0/24 is directly connected, Loopback1000",
+                    "L        40.40.40.40/32 is directly connected, Loopback1000",
                     "      172.16.0.0/16 is variably subnetted, 9 subnets, 2 masks",
                     "C        172.16.12.0/24 is directly connected, Ethernet0/2",
                     "L        172.16.12.1/32 is directly connected, Ethernet0/2",
-                    "D        172.16.24.0/24 [90/307200] via 172.16.124.4, 01:56:41, Ethernet0/1",
-                    "D        172.16.34.0/24 [90/307200] via 172.16.124.4, 01:56:41, Ethernet0/1",
-                    "D EX     172.16.100.0/24 [170/309760] via 172.16.124.4, 01:56:38, Ethernet0/1",
+                    "D        172.16.24.0/24 [90/307200] via 172.16.124.4, 00:03:17, Ethernet0/1",
+                    "                        [90/307200] via 172.16.124.2, 00:03:17, Ethernet0/1",
+                    "                        [90/307200] via 172.16.12.2, 00:03:17, Ethernet0/2",
+                    "D        172.16.34.0/24 [90/307200] via 172.16.124.4, 02:08:22, Ethernet0/1",
+                    "D EX     172.16.100.0/24 [170/309760] via 172.16.124.4, 02:08:19, Ethernet0/1",
                     "C        172.16.124.0/24 is directly connected, Ethernet0/1",
                     "L        172.16.124.1/32 is directly connected, Ethernet0/1",
                     "C        172.16.200.0/24 is directly connected, Ethernet0/0",
@@ -296,7 +317,7 @@
             "IOU3_version_summary": {
                 "command": "show version | include uptime",
                 "output": [
-                    "IOU3 uptime is 1 hour, 56 minutes"
+                    "IOU3 uptime is 2 hours, 8 minutes"
                 ]
             },
             "IOU3_running_config": {
@@ -486,7 +507,7 @@
                     "EIGRP-IPv4 Neighbors for AS(100)",
                     "H   Address                 Interface              Hold Uptime   SRTT   RTO  Q  Seq",
                     "                                                   (sec)         (ms)       Cnt Num",
-                    "0   172.16.34.4             Et0/1                    12 01:56:44   11   100  0  11"
+                    "0   172.16.34.4             Et0/1                    11 02:08:26   11   100  0  17"
                 ]
             },
             "IOU3_show interface description": {
@@ -548,17 +569,17 @@
                     "Gateway of last resort is not set",
                     "",
                     "      10.0.0.0/32 is subnetted, 1 subnets",
-                    "B        10.10.10.10 [20/0] via 172.16.100.1, 01:54:20",
+                    "B        10.10.10.10 [20/0] via 172.16.100.1, 02:06:02",
                     "      172.16.0.0/16 is variably subnetted, 8 subnets, 2 masks",
-                    "D        172.16.12.0/24 [90/332800] via 172.16.34.4, 01:56:40, Ethernet0/1",
-                    "D        172.16.24.0/24 [90/307200] via 172.16.34.4, 01:56:40, Ethernet0/1",
+                    "D        172.16.12.0/24 [90/332800] via 172.16.34.4, 00:03:17, Ethernet0/1",
+                    "D        172.16.24.0/24 [90/307200] via 172.16.34.4, 02:08:22, Ethernet0/1",
                     "C        172.16.34.0/24 is directly connected, Ethernet0/1",
                     "L        172.16.34.3/32 is directly connected, Ethernet0/1",
                     "C        172.16.100.0/24 is directly connected, Ethernet0/0",
                     "L        172.16.100.2/32 is directly connected, Ethernet0/0",
-                    "D        172.16.124.0/24 [90/307200] via 172.16.34.4, 01:56:40, Ethernet0/1",
-                    "D EX     172.16.200.0/24 [170/309760] via 172.16.34.4, 01:56:40, Ethernet0/1",
-                    "D     192.168.91.0/24 [90/332800] via 172.16.34.4, 01:56:40, Ethernet0/1"
+                    "D        172.16.124.0/24 [90/307200] via 172.16.34.4, 02:08:22, Ethernet0/1",
+                    "D EX     172.16.200.0/24 [170/309760] via 172.16.34.4, 02:08:22, Ethernet0/1",
+                    "D     192.168.91.0/24 [90/332800] via 172.16.34.4, 02:08:22, Ethernet0/1"
                 ]
             }
         }
@@ -569,7 +590,7 @@
             "IOU4_version_summary": {
                 "command": "show version | include uptime",
                 "output": [
-                    "IOU4 uptime is 1 hour, 56 minutes"
+                    "IOU4 uptime is 2 hours, 8 minutes"
                 ]
             },
             "IOU4_running_config": {
@@ -752,9 +773,10 @@
                     "EIGRP-IPv4 Neighbors for AS(100)",
                     "H   Address                 Interface              Hold Uptime   SRTT   RTO  Q  Seq",
                     "                                                   (sec)         (ms)       Cnt Num",
-                    "2   172.16.124.1            Et0/2                    13 01:56:46   19   114  0  11",
-                    "1   172.16.34.3             Et0/1                    12 01:56:46   15   100  0  5",
-                    "0   172.16.124.2            Et0/2                    12 01:56:46    5   100  0  10"
+                    "3   172.16.24.2             Et0/0                    13 00:03:20    5   100  0  20",
+                    "2   172.16.124.1            Et0/2                    14 02:08:27   18   108  0  15",
+                    "1   172.16.34.3             Et0/1                    10 02:08:28   15   100  0  5",
+                    "0   172.16.124.2            Et0/2                    12 02:08:28    7   100  0  19"
                 ]
             },
             "IOU4_show interface description": {
@@ -816,19 +838,20 @@
                     "Gateway of last resort is not set",
                     "",
                     "      10.0.0.0/32 is subnetted, 1 subnets",
-                    "D EX     10.10.10.10 [170/284160] via 172.16.34.3, 01:54:22, Ethernet0/1",
+                    "D EX     10.10.10.10 [170/284160] via 172.16.34.3, 00:03:14, Ethernet0/1",
                     "      172.16.0.0/16 is variably subnetted, 9 subnets, 2 masks",
-                    "D        172.16.12.0/24 [90/307200] via 172.16.124.2, 01:56:45, Ethernet0/2",
-                    "                        [90/307200] via 172.16.124.1, 01:56:45, Ethernet0/2",
+                    "D        172.16.12.0/24 [90/307200] via 172.16.124.2, 00:03:19, Ethernet0/2",
+                    "                        [90/307200] via 172.16.124.1, 00:03:19, Ethernet0/2",
+                    "                        [90/307200] via 172.16.24.2, 00:03:19, Ethernet0/0",
                     "C        172.16.24.0/24 is directly connected, Ethernet0/0",
                     "L        172.16.24.4/32 is directly connected, Ethernet0/0",
                     "C        172.16.34.0/24 is directly connected, Ethernet0/1",
                     "L        172.16.34.4/32 is directly connected, Ethernet0/1",
-                    "D EX     172.16.100.0/24 [170/284160] via 172.16.34.3, 01:56:42, Ethernet0/1",
+                    "D EX     172.16.100.0/24 [170/284160] via 172.16.34.3, 00:03:14, Ethernet0/1",
                     "C        172.16.124.0/24 is directly connected, Ethernet0/2",
                     "L        172.16.124.4/32 is directly connected, Ethernet0/2",
-                    "D EX     172.16.200.0/24 [170/284160] via 172.16.124.1, 01:56:45, Ethernet0/2",
-                    "D     192.168.91.0/24 [90/307200] via 172.16.124.1, 01:56:45, Ethernet0/2"
+                    "D EX     172.16.200.0/24 [170/284160] via 172.16.124.1, 00:03:19, Ethernet0/2",
+                    "D     192.168.91.0/24 [90/307200] via 172.16.124.1, 00:03:19, Ethernet0/2"
                 ]
             }
         }
@@ -839,7 +862,7 @@
             "IOU2_version_summary": {
                 "command": "show version | include uptime",
                 "output": [
-                    "IOU2 uptime is 1 hour, 56 minutes"
+                    "IOU2 uptime is 2 hours, 8 minutes"
                 ]
             },
             "IOU2_running_config": {
@@ -847,8 +870,9 @@
                 "output": [
                     "Building configuration...",
                     "",
-                    "Current configuration : 2285 bytes",
+                    "Current configuration : 2495 bytes",
                     "!",
+                    "! Last configuration change at 09:49:48 UTC Wed Oct 13 2021",
                     "version 1 ***********",
                     "service timestamps debug datetime msec",
                     "service timestamps log datetime msec",
@@ -912,9 +936,12 @@
                     " no ip address",
                     " ip access-group TEST-ICMP in",
                     "!",
+                    "interface Loopback1200",
+                    " description TESTING DESC",
+                    " no ip address",
+                    "!",
                     "interface Ethernet0/0",
                     " ip address 172.16.24.2 255.255.255.0",
-                    " shutdown",
                     "!",
                     "interface Ethernet0/1",
                     " description IOU1",
@@ -998,6 +1025,9 @@
                     "ip access-list extended TEST-ICMP",
                     " permit icmp host 192.168.91.250 any",
                     " deny   icmp any any",
+                    "ip access-list extended TEST-ICMP-1",
+                    " permit icmp host 192.168.91.242 any",
+                    " deny   icmp any any",
                     "!",
                     "!",
                     "!",
@@ -1032,16 +1062,17 @@
                     "EIGRP-IPv4 Neighbors for AS(100)",
                     "H   Address                 Interface              Hold Uptime   SRTT   RTO  Q  Seq",
                     "                                                   (sec)         (ms)       Cnt Num",
-                    "2   172.16.124.1            Et0/2                    12 01:56:47   14   100  0  11",
-                    "1   172.16.12.1             Et0/1                    12 01:56:47   12   100  0  10",
-                    "0   172.16.124.4            Et0/2                    12 01:56:48 1281  5000  0  12"
+                    "3   172.16.24.4             Et0/0                    14 00:03:22 1598  5000  0  18",
+                    "2   172.16.124.1            Et0/2                    12 02:08:29   10   100  0  15",
+                    "1   172.16.12.1             Et0/1                    12 02:08:29    7   100  0  14",
+                    "0   172.16.124.4            Et0/2                    12 02:08:29  656  3936  0  16"
                 ]
             },
             "IOU2_show interface description": {
                 "command": "show interface description",
                 "output": [
                     "Interface                      Status         Protocol Description",
-                    "Et0/0                          admin down     down",
+                    "Et0/0                          up             up",
                     "Et0/1                          up             up       IOU1",
                     "Et0/2                          up             up",
                     "Et0/3                          admin down     down",
@@ -1057,14 +1088,15 @@
                     "Se3/1                          admin down     down",
                     "Se3/2                          admin down     down",
                     "Se3/3                          admin down     down",
-                    "Lo90                           up             up       ADDING LOOPBACK"
+                    "Lo90                           up             up       ADDING LOOPBACK",
+                    "Lo1200                         up             up       TESTING DESC"
                 ]
             },
             "IOU2_show ip interface brief": {
                 "command": "show ip interface brief",
                 "output": [
                     "Interface                  IP-Address      OK? Method Status                Protocol",
-                    "Ethernet0/0                172.16.24.2     YES NVRAM  administratively down down",
+                    "Ethernet0/0                172.16.24.2     YES NVRAM  up                    up",
                     "Ethernet0/1                172.16.12.2     YES NVRAM  up                    up",
                     "Ethernet0/2                172.16.124.2    YES NVRAM  up                    up",
                     "Ethernet0/3                unassigned      YES NVRAM  administratively down down",
@@ -1080,7 +1112,8 @@
                     "Serial3/1                  unassigned      YES NVRAM  administratively down down",
                     "Serial3/2                  unassigned      YES NVRAM  administratively down down",
                     "Serial3/3                  unassigned      YES NVRAM  administratively down down",
-                    "Loopback90                 unassigned      YES unset  up                    up"
+                    "Loopback90                 unassigned      YES unset  up                    up",
+                    "Loopback1200               unassigned      YES unset  up                    up"
                 ]
             },
             "IOU2_show ip route": {
@@ -1098,19 +1131,23 @@
                     "Gateway of last resort is not set",
                     "",
                     "      10.0.0.0/32 is subnetted, 1 subnets",
-                    "D EX     10.10.10.10 [170/309760] via 172.16.124.4, 01:54:23, Ethernet0/2",
-                    "      172.16.0.0/16 is variably subnetted, 8 subnets, 2 masks",
+                    "D EX     10.10.10.10 [170/309760] via 172.16.124.4, 00:03:21, Ethernet0/2",
+                    "                     [170/309760] via 172.16.24.4, 00:03:21, Ethernet0/0",
+                    "      172.16.0.0/16 is variably subnetted, 9 subnets, 2 masks",
                     "C        172.16.12.0/24 is directly connected, Ethernet0/1",
                     "L        172.16.12.2/32 is directly connected, Ethernet0/1",
-                    "D        172.16.24.0/24 [90/307200] via 172.16.124.4, 01:56:43, Ethernet0/2",
-                    "D        172.16.34.0/24 [90/307200] via 172.16.124.4, 01:56:43, Ethernet0/2",
-                    "D EX     172.16.100.0/24 [170/309760] via 172.16.124.4, 01:56:43, Ethernet0/2",
+                    "C        172.16.24.0/24 is directly connected, Ethernet0/0",
+                    "L        172.16.24.2/32 is directly connected, Ethernet0/0",
+                    "D        172.16.34.0/24 [90/307200] via 172.16.124.4, 00:03:21, Ethernet0/2",
+                    "                        [90/307200] via 172.16.24.4, 00:03:21, Ethernet0/0",
+                    "D EX     172.16.100.0/24 [170/309760] via 172.16.124.4, 00:03:21, Ethernet0/2",
+                    "                         [170/309760] via 172.16.24.4, 00:03:21, Ethernet0/0",
                     "C        172.16.124.0/24 is directly connected, Ethernet0/2",
                     "L        172.16.124.2/32 is directly connected, Ethernet0/2",
-                    "D EX     172.16.200.0/24 [170/284160] via 172.16.124.1, 01:56:46, Ethernet0/2",
-                    "                         [170/284160] via 172.16.12.1, 01:56:46, Ethernet0/1",
-                    "D     192.168.91.0/24 [90/307200] via 172.16.124.1, 01:56:46, Ethernet0/2",
-                    "                      [90/307200] via 172.16.12.1, 01:56:46, Ethernet0/1"
+                    "D EX     172.16.200.0/24 [170/284160] via 172.16.124.1, 00:03:21, Ethernet0/2",
+                    "                         [170/284160] via 172.16.12.1, 00:03:21, Ethernet0/1",
+                    "D     192.168.91.0/24 [90/307200] via 172.16.124.1, 00:03:21, Ethernet0/2",
+                    "                      [90/307200] via 172.16.12.1, 00:03:21, Ethernet0/1"
                 ]
             },
             "IOU2_show ip access-lists": {
@@ -1118,6 +1155,9 @@
                 "output": [
                     "Extended IP access list TEST-ICMP",
                     "    10 permit icmp host 192.168.91.250 any",
+                    "    20 deny icmp any any",
+                    "Extended IP access list TEST-ICMP-1",
+                    "    10 permit icmp host 192.168.91.242 any",
                     "    20 deny icmp any any"
                 ]
             }
@@ -1129,7 +1169,7 @@
             "ARISTA-1_version_summary": {
                 "command": "show version | include Uptime",
                 "output": [
-                    "Uptime:                 0 weeks, 0 days, 1 hours and 56 minutes"
+                    "Uptime:                 0 weeks, 0 days, 2 hours and 7 minutes"
                 ]
             },
             "ARISTA-1_running_config": {
@@ -1166,6 +1206,12 @@
                     "vlan 400",
                     "   name VOICE_VLAN",
                     "!",
+                    "vlan 500",
+                    "   name WIRELESS_VLAN_2",
+                    "!",
+                    "vlan 600",
+                    "   name VOICE_VLAN_2",
+                    "!",
                     "interface Ethernet1",
                     "   description IOU1",
                     "   switchport access vlan 200",
@@ -1177,6 +1223,7 @@
                     "   switchport access vlan 100",
                     "!",
                     "interface Ethernet4",
+                    "   description IOU4",
                     "!",
                     "interface Ethernet5",
                     "!",
@@ -1229,7 +1276,9 @@
                     "100   UPSTREAM                         active    Cpu, Et3",
                     "200   DOWNSTREAM                       active    Cpu, Et1",
                     "300   WIRELESS_VLAN                    active",
-                    "400   VOICE_VLAN                       active"
+                    "400   VOICE_VLAN                       active",
+                    "500   WIRELESS_VLAN_2                  active",
+                    "600   VOICE_VLAN_2                     active"
                 ]
             },
             "ARISTA-1_show ip bgp summary": {
@@ -1239,8 +1288,8 @@
                     "Router identifier 10.10.10.10, local AS number 65555",
                     "Neighbor Status Codes: m - Under maintenance",
                     "  Neighbor         V  AS           MsgRcvd   MsgSent  InQ OutQ  Up/Down State   PfxRcd PfxAcc",
-                    "  172.16.100.2     4  65500            133       120    0    0 01:54:32 Estab   7      7",
-                    "  172.16.200.1     4  65555            132       122    0    0 01:54:30 Estab   8      8"
+                    "  172.16.100.2     4  65500            146       132    0    0 02:06:08 Estab   7      7",
+                    "  172.16.200.1     4  65555            145       134    0    0 02:06:06 Estab   8      8"
                 ]
             },
             "ARISTA-1_show interface description": {
@@ -1250,7 +1299,7 @@
                     "Et1                            up             up                 IOU1",
                     "Et2                            up             up",
                     "Et3                            up             up                 IOU3",
-                    "Et4                            up             up",
+                    "Et4                            up             up                 IOU4",
                     "Et5                            up             up",
                     "Et6                            up             up",
                     "Et7                            up             up",
@@ -1280,7 +1329,7 @@
                     " *       10.10.10.10/32         172.16.124.4          309760  100     0       ?",
                     " * >     172.16.12.0/24         172.16.200.1          0       100     0       ?",
                     " *       172.16.12.0/24         172.16.100.2          332800  100     0       65500 ?",
-                    " * >     172.16.24.0/24         172.16.124.4          307200  100     0       ?",
+                    " * >     172.16.24.0/24         172.16.12.2           307200  100     0       ?",
                     " *       172.16.24.0/24         172.16.100.2          307200  100     0       65500 ?",
                     " * >     172.16.34.0/24         172.16.124.4          307200  100     0       ?",
                     " *       172.16.34.0/24         172.16.100.2          0       100     0       65500 ?",

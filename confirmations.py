@@ -60,15 +60,16 @@ class DeviceState:
 
 def main():
     try:
+        file_name = sys.argv[1]
         operation_method = input('Enter operation method "pre" or "post": ')
-        rpd = input('Enter RPD id: ')
-        date = input('Enter date in MM-DD-YY format: ')
-        file_name = input('Inventory file path: ')
+        user_rpd = input('Enter RPD id: ')
     except Exception as e:
         pass
 
-    pwd = os.getcwd()
-    rpd_id = re.sub("\D", "", rpd)
+    c_pwd = os.getcwd()
+    pwd = os.path.join(c_pwd, 'Diffs')
+    rpd = re.sub("\D", "", user_rpd)
+    rpd_id = 'RPD'+str(rpd)
     
     cisco_commands = {
                       'running_config': {'command': 'show running-config', 'output': {}}
@@ -93,16 +94,22 @@ def main():
     
 
     if operation_method.lower() == 'pre' or operation_method.lower() == 'post':
-        with open(file_name, 'r') as f:
-            user_data = yaml.safe_load(f)
-        os_types = user_data['devices'].keys()
+        if file_name.endswith('.yml') or file_name.endswith('.yaml'):
+            with open(file_name, 'r') as f:
+                user_data = yaml.safe_load(f)
+            try:
+                os_types = user_data['devices'].keys()
+            except KeyError:
+                print('Invalid file format. Please enter the inventory details properly')
+        else:
+            print('Invalid file, please provide the file in yaml format')
 
         rpd_dir_path = os.path.join(pwd, rpd_id)
         if not os.path.exists(rpd_dir_path):
             os.mkdir(rpd_dir_path)
         
         if operation_method.lower() == 'pre':
-            config_file_path = os.path.join(rpd_dir_path, date+'.txt')
+            config_file_path = os.path.join(rpd_dir_path, 'confirmations.txt')
             f = open(config_file_path, 'w')
             f.close()
             

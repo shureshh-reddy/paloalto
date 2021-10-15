@@ -1,6 +1,5 @@
 import yaml
 import json
-import datetime
 import re
 import os
 import sys
@@ -9,9 +8,16 @@ import time
 import platform
 import subprocess
 
+from datetime import datetime, timedelta
+from pytz import timezone
 from shutil import copyfile
 from subprocess import Popen, PIPE
 from scrapli.driver.core import IOSXEDriver, EOSDriver
+
+eastern = timezone('US/Eastern')
+now = datetime.now(tz=eastern)
+fmt = '%m-%d-%Y,%H:%M'
+current_date = now.strftime(fmt)
 
 class DeviceState:
 
@@ -117,8 +123,7 @@ def main():
         if operation_method.lower() == 'pre':
             config_file_path = os.path.join(rpd_dir_path, 'confirmations.txt')
             f = open(config_file_path, 'w')
-            current_time = time.strftime("%D:%M:%Y %H:%M", time.gmtime())
-            f.write('{} changes at {}'.format(operation_method.lower(), current_time))
+            f.write('{} changes at {}'.format(operation_method.lower(), current_date))
             f.close()
             
         elif operation_method.lower() == 'post':
@@ -127,8 +132,7 @@ def main():
             if dir_list:
                 config_file_path = os.path.join(rpd_dir_path, dir_list[0])
                 f = open(config_file_path, 'w')
-                current_time = time.strftime("%D:%M:%Y %H:%M", time.gmtime())
-                f.write('{} changes at {}'.format(operation_method.lower(), current_time))
+                f.write('{} changes at {}'.format(operation_method.lower(), current_date))
                 f.close()
             else:
                 print('Please do PRE run before running post')
@@ -182,19 +186,18 @@ def main():
             git_push(operation_method.lower())
         else:
             if operation_method.lower() == 'pre':
-                copyfile(config_file_path, '/tmp/RPD_DIFFS'+'/PRE_{}'.format(rpd_id))
+                copyfile(config_file_path, '/root/RPD_DIFFS'+'/PRE_{}.{}'.format(rpd_id, 'txt'))
             elif operation_method.lower() == 'post':
-                copyfile(config_file_path, '/tmp/RPD_DIFFS'+'/POST_{}'.format(rpd_id))
+                copyfile(config_file_path, '/root/RPD_DIFFS'+'/POST_{}.{}'.format(rpd_id, 'txt'))
             
 
 def git_push(method):
-    current_time = time.strftime("%D:%M:%Y %H:%M", time.gmtime())
     path = os.getcwd()
     if os.path.isdir(path):
         repo = git.Repo(path)
     fetch_commad = 'git fetch origin {}:{}'.format('master', 'master')
     add_command = 'git add .'
-    commit_msg = "git commit -m '{} changes made at {}'".format(method, current_time)
+    commit_msg = "git commit -m '{} changes made at {}'".format(method, current_date)
     #os.system(fetch_commad)
     #time.sleep(1)
     os.system(add_command)

@@ -70,6 +70,7 @@ class DeviceState:
             return None
 
 def main():
+    global rpd_id
     try:
         file_name = sys.argv[1]
     except Exception as e:
@@ -179,41 +180,34 @@ def main():
 
                     with open(config_file_path, 'a') as file:
                         json.dump(config_state, file, indent=4)
-        p = Popen(['curl', '-vk', 'https://www.github.factset.com'], stdin=PIPE, stdout=PIPE, stderr=PIPE)
-        output, err = p.communicate(b"input data that is passed to subprocess' curl commands")
 
-        if 'Connected' in err.decode("utf-8"):
-            git_push(operation_method.lower())
-        else:
-            if operation_method.lower() == 'pre':
-                copyfile(config_file_path, '/root/RPD_DIFFS'+'/PRE_{}.{}'.format(rpd_id, 'txt'))
-            elif operation_method.lower() == 'post':
-                copyfile(config_file_path, '/root/RPD_DIFFS'+'/POST_{}.{}'.format(rpd_id, 'txt'))
-            
+        git_push(operation_method.lower(), config_file_path)            
 
-def git_push(method):
+def git_push(method, file_path):
     path = os.getcwd()
     if os.path.isdir(path):
         repo = git.Repo(path)
+    
+    p = Popen(['curl', '-vk', 'https://www.github.factset.com'], stdin=PIPE, stdout=PIPE, stderr=PIPE)
+    output, err = p.communicate(b"input data that is passed to subprocess' curl commands")
     fetch_commad = 'git fetch origin {}:{}'.format('master', 'master')
     add_command = 'git add .'
     commit_msg = "git commit -m '{} changes made at {}'".format(method, current_date)
-    #os.system(fetch_commad)
-    #time.sleep(1)
+    #if 'Connected' in err.decode("utf-8"):
+    #    os.system(fetch_commad)
+    #    time.sleep(1)
     os.system(add_command)
     time.sleep(1)
     os.system(commit_msg)
 
-def ping(self, host):
-        """
-        Returns True if host (str) responds to a ping request.
-        Remember that a host may not respond to a ping (ICMP) request even if the host name is valid.
-        """
-        param = '-n' if platform.system().lower()=='windows' else '-c'
-
-        command = ['ping', param, '1', host]
-
-        return subprocess.call(command) == 0
+    if 'Connected' in err.decode("utf-8"):
+        print('Please push to GitHub')
+    else:
+        print('Unable to Connect to GitHub, Creating config files in local machine in /root/RPD_DIFFS path')
+        if method == 'pre':
+            copyfile(file_path, '/root/RPD_DIFFS'+'/PRE_{}.{}'.format(rpd_id, 'txt'))
+        elif method == 'post':
+            copyfile(file_path, '/root/RPD_DIFFS'+'/POST_{}.{}'.format(rpd_id, 'txt'))
 
 if __name__ == "__main__":
     main()

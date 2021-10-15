@@ -177,7 +177,7 @@ def main():
         p = Popen(['curl', '-vk', 'https://www.github.factset.com'], stdin=PIPE, stdout=PIPE, stderr=PIPE)
         output, err = p.communicate(b"input data that is passed to subprocess' curl commands")
 
-        if 'Connected' in err.decode("utf-8") :
+        if 'Connected' in err.decode("utf-8"):
             git_push(operation_method.lower())
         else:
             if operation_method.lower() == 'pre':
@@ -188,7 +188,7 @@ def main():
 
 def git_push(method):
     current_time = time.strftime("%H:%M", time.gmtime())
-    current_date = time.strftime("%DD:%MM:%YY", time.gmtime())
+    current_date = time.strftime("%D:%M:%Y", time.gmtime())
     path = os.getcwd()
     if os.path.isdir(path):
         repo = git.Repo(path)

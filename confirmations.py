@@ -1,11 +1,16 @@
 import yaml
 import json
+import datetime
 import re
 import os
 import sys
 import git
 import time
-import datetime
+import platform
+import subprocess
+
+from shutil import copyfile
+from subprocess import Popen, PIPE
 from scrapli.driver.core import IOSXEDriver, EOSDriver
 
 class DeviceState:
@@ -111,6 +116,8 @@ def main():
         if operation_method.lower() == 'pre':
             config_file_path = os.path.join(rpd_dir_path, 'confirmations.txt')
             f = open(config_file_path, 'w')
+            current_time = time.strftime("%DD:%MM:%YY %H:%M", time.gmtime())
+            f.write('{} changes at {}'.format(operation_method.lower(), current_time))
             f.close()
             
         elif operation_method.lower() == 'post':
@@ -119,6 +126,8 @@ def main():
             if dir_list:
                 config_file_path = os.path.join(rpd_dir_path, dir_list[0])
                 f = open(config_file_path, 'w')
+                current_time = time.strftime("%DD:%MM:%YY %H:%M", time.gmtime())
+                f.write('{} changes at {}'.format(operation_method.lower(), current_time))
                 f.close()
             else:
                 print('Please do PRE run before running post')
@@ -165,19 +174,43 @@ def main():
 
                     with open(config_file_path, 'a') as file:
                         json.dump(config_state, file, indent=4)
-    git_push(operation_method.lower())
+        p = Popen(['curl', '-vk', 'https://www.github.factset.com'], stdin=PIPE, stdout=PIPE, stderr=PIPE)
+        output, err = p.communicate(b"input data that is passed to subprocess' curl commands")
+
+        if 'Connected' in err.decode("utf-8") :
+            git_push(operation_method.lower())
+        else:
+            if operation_method.lower() == 'pre':
+                copyfile(config_file_path, '/tmp/RPD_DIFFS'+'/PRE_'.format(rpd_id))
+            elif operation_method.lower() == 'post':
+                copyfile(config_file_path, '/tmp/RPD_DIFFS'+'/POST_'.format(rpd_id))
+            
 
 def git_push(method):
     current_time = time.strftime("%H:%M", time.gmtime())
+    current_date = time.strftime("%DD:%MM:%YY", time.gmtime())
     path = os.getcwd()
     if os.path.isdir(path):
         repo = git.Repo(path)
     fetch_commad = 'git fetch origin {}:{}'.format('master', 'master')
     add_command = 'git add .'
-    commit_msg = "git commit -m '{} changes made at {}'".format(method, current_time)
+    commit_msg = "git commit -m '{} changes made on {} at {}'".format(method, current_time, current_date)
+    #os.system(fetch_commad)
+    #time.sleep(1)
     os.system(add_command)
     time.sleep(1)
     os.system(commit_msg)
+
+def ping(self, host):
+        """
+        Returns True if host (str) responds to a ping request.
+        Remember that a host may not respond to a ping (ICMP) request even if the host name is valid.
+        """
+        param = '-n' if platform.system().lower()=='windows' else '-c'
+
+        command = ['ping', param, '1', host]
+
+        return subprocess.call(command) == 0
 
 if __name__ == "__main__":
     main()

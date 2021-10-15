@@ -182,14 +182,14 @@ def main():
             git_push(operation_method.lower())
         else:
             if operation_method.lower() == 'pre':
-                copyfile(config_file_path, '/tmp/RPD_DIFFS'+'/PRE_'.format(rpd_id))
+                copyfile(config_file_path, '/tmp/RPD_DIFFS'+'/PRE_{}'.format(rpd_id))
             elif operation_method.lower() == 'post':
-                copyfile(config_file_path, '/tmp/RPD_DIFFS'+'/POST_'.format(rpd_id))
+                copyfile(config_file_path, '/tmp/RPD_DIFFS'+'/POST_{}'.format(rpd_id))
             
 
 def git_push(method):
     current_time = time.strftime("%H:%M", time.gmtime())
-    current_date = time.strftime("%D:%M:%Y", time.gmtime())
+    current_date = time.strftime("%D", time.gmtime())
     path = os.getcwd()
     if os.path.isdir(path):
         repo = git.Repo(path)

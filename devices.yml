@@ -1,9 +1,0 @@
-devices:
-  arista_eos:
-    - ip_address:
-        - ARISTA-1
-      commands:
-        - show vlan
-        - show ip bgp summary
-        - show interface description
-        - show ip bgp

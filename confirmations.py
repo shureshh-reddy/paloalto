@@ -66,10 +66,11 @@ class DeviceState:
 def main():
     try:
         file_name = sys.argv[1]
-        operation_method = input('Enter operation method "pre" or "post": ')
-        user_rpd = input('Enter RPD id: ')
     except Exception as e:
-        pass
+        print('Please provide inventory file as argument. ', e)
+        sys.exit(1)
+    operation_method = input('Enter operation method "pre" or "post": ')
+    user_rpd = input('Enter RPD id: ')
 
     c_pwd = os.getcwd()
     pwd = os.path.join(c_pwd, 'Diffs')
@@ -116,7 +117,7 @@ def main():
         if operation_method.lower() == 'pre':
             config_file_path = os.path.join(rpd_dir_path, 'confirmations.txt')
             f = open(config_file_path, 'w')
-            current_time = time.strftime("%DD:%MM:%YY %H:%M", time.gmtime())
+            current_time = time.strftime("%D:%M:%Y %H:%M", time.gmtime())
             f.write('{} changes at {}'.format(operation_method.lower(), current_time))
             f.close()
             
@@ -126,7 +127,7 @@ def main():
             if dir_list:
                 config_file_path = os.path.join(rpd_dir_path, dir_list[0])
                 f = open(config_file_path, 'w')
-                current_time = time.strftime("%DD:%MM:%YY %H:%M", time.gmtime())
+                current_time = time.strftime("%D:%M:%Y %H:%M", time.gmtime())
                 f.write('{} changes at {}'.format(operation_method.lower(), current_time))
                 f.close()
             else:

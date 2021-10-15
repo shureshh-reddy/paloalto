@@ -188,14 +188,13 @@ def main():
             
 
 def git_push(method):
-    current_time = time.strftime("%H:%M", time.gmtime())
-    current_date = time.strftime("%D", time.gmtime())
+    current_time = time.strftime("%D:%M:%Y %H:%M", time.gmtime())
     path = os.getcwd()
     if os.path.isdir(path):
         repo = git.Repo(path)
     fetch_commad = 'git fetch origin {}:{}'.format('master', 'master')
     add_command = 'git add .'
-    commit_msg = "git commit -m '{} changes made on {} at {}'".format(method, current_time, current_date)
+    commit_msg = "git commit -m '{} changes made at {}'".format(method, current_time)
     #os.system(fetch_commad)
     #time.sleep(1)
     os.system(add_command)

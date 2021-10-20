@@ -1,4 +1,4 @@
-pre changes at 10-20-2021,05:59[
+pre changes at 10-20-2021,06:04[
     {
         "IOU1": {
             "IOU1_running_config": {
@@ -860,4 +860,113 @@ pre changes at 10-20-2021,05:59[
             }
         }
     }
-][]
+][
+    {
+        "ARISTA-1": {
+            "ARISTA-1_running_config": {
+                "command": "show running-config",
+                "output": [
+                    "! Command: show running-config",
+                    "! device: ARISTA-1 (vEOS, EOS-4.21.14M)",
+                    "!",
+                    "! boot system flash:/vEOS-lab.swi",
+                    "!",
+                    "transceiver qsfp default-mode 4x10G",
+                    "!",
+                    "hostname ARISTA-1",
+                    "!",
+                    "snmp-server community ***********",
+                    "!",
+                    "spanning-tree mode mstp",
+                    "!",
+                    "tacacs-server key ***********",
+                    "!",
+                    "no aaa root",
+                    "!",
+                    "username cisco privilege 15 secret ***********",
+                    "!",
+                    "vlan 100",
+                    "   name UPSTREAM",
+                    "!",
+                    "vlan 200",
+                    "   name DOWNSTREAM",
+                    "!",
+                    "vlan 300",
+                    "   name WIRELESS_VLAN",
+                    "!",
+                    "vlan 400",
+                    "   name VOICE_VLAN",
+                    "!",
+                    "vlan 500",
+                    "   name WIRELESS_VLAN_2",
+                    "!",
+                    "vlan 600",
+                    "   name VOICE_VLAN_2",
+                    "!",
+                    "interface Ethernet1",
+                    "   description IOU1",
+                    "   switchport access vlan 200",
+                    "!",
+                    "interface Ethernet2",
+                    "!",
+                    "interface Ethernet3",
+                    "   description IOU3",
+                    "   switchport access vlan 100",
+                    "!",
+                    "interface Ethernet4",
+                    "   description IOU4",
+                    "!",
+                    "interface Ethernet5",
+                    "!",
+                    "interface Ethernet6",
+                    "!",
+                    "interface Ethernet7",
+                    "!",
+                    "interface Ethernet8",
+                    "!",
+                    "interface Ethernet9",
+                    "!",
+                    "interface Ethernet10",
+                    "!",
+                    "interface Ethernet11",
+                    "!",
+                    "interface Ethernet12",
+                    "!",
+                    "interface Loopback1",
+                    "   ip address 10.10.10.10/32",
+                    "!",
+                    "interface Management1",
+                    "!",
+                    "interface Vlan100",
+                    "   ip address 172.16.100.1/24",
+                    "!",
+                    "interface Vlan200",
+                    "   ip address 172.16.200.2/24",
+                    "!",
+                    "ip routing",
+                    "!",
+                    "router bgp 65555",
+                    "   neighbor 172.16.100.2 remote-as 65500",
+                    "   neighbor 172.16.100.2 maximum-routes 12000",
+                    "   neighbor 172.16.200.1 remote-as 65555",
+                    "   neighbor 172.16.200.1 maximum-routes 12000",
+                    "   network 10.10.10.10/32",
+                    "   network 172.16.100.0/24",
+                    "   network 172.16.200.0/24",
+                    "!",
+                    "end"
+                ]
+            },
+            "ARISTA-1_show ip interface brief": {
+                "command": "show ip interface brief",
+                "output": [
+                    "Interface              IP Address         Status     Protocol         MTU",
+                    "Loopback1              10.10.10.10/32     up         up             65535",
+                    "Management1            unassigned         up         up              1500",
+                    "Vlan100                172.16.100.1/24    up         up              1500",
+                    "Vlan200                172.16.200.2/24    up         up              1500"
+                ]
+            }
+        }
+    }
+]
